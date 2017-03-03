@@ -1,0 +1,25 @@
+\documentclass[thesis=M,czech]{FITthesis}[2012/06/26]
+
+\usepackage[utf8]{inputenc} % LaTeX source encoded as UTF-8
+\usepackage{graphicx} %graphics files inclusion
+\usepackage{dirtree} %directory tree visualisation
+\usepackage{listings}
+\usepackage{multicol}
+
+\input{tex/meta.tex}
+
+\begin{document}
+
+  \input{tex/introduction.tex}
+  \input{tex/analyza-konkurence.tex}
+  \input{tex/conclusion.tex}
+
+  \bibliographystyle{csn690}
+  \bibliography{mybibliographyfile}
+
+  \appendix
+  \input{tex/abbrs.tex}
+  \input{tex/medium.tex}
+%  \input{tex/temp.tex}
+
+\end{document}

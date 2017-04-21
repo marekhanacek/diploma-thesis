@@ -1,0 +1,89 @@
+\chapter{Požadavky na aplikaci}
+\label{requirements}
+
+Mnou vyvíjená webová aplikace lidem umožní zadávat nabídky/poptávky na výměnu určitého obnosu peněz z jedné měny do druhé, fyzicky v okolí jejich výskytu a na setkání se s případným protějškem domluvit.
+\\\\
+Následující dvě podkapitoly popisují požadavky na aplikaci z pohledu funkčních\footnote{Požadavky kladoucí omezení na funkčnost a logiku fungování systému.} a nefunkčních\footnote{Požadavky, které kladou omezení na design a provedení.} požadavků.
+\\\\
+Požadavky vychází jak ze zadání, tak z analýzy podobných webů.
+\section{Funkční požadavky}
+\begin{itemize}
+    \item[F1] Nabídka pro směnu peněz obsahuje
+        \begin{itemize}
+            \item Měny, které budou směněny
+            \item Částky v jednotlivých měnách
+            \item Adresu a rádius pro vyhledávání
+            \item Komentář k nabídce
+            \item Hodnocení uživatele za dokončenou nabídku
+        \end{itemize}
+    \item[F2] Hodnocení nabídky/uživatele obsahuje
+        \begin{itemize}
+            \item Hodnocení pomocí 0 až 5 hvězdiček
+            \item Textový komentář
+            \item Hodnocení protistrany je vidno až po týdnu od předání peněz nebo ihned po zadání vlastního hodnocení
+            \item Ostatní uživatelé vidí hodnocení až po zadaní hodnocení obou stran, případně po uplynutí jednoho týdne
+        \end{itemize}
+    \item[F3] Vyhledávání nabídky
+        \begin{itemize}
+            \item Vyhledávat nabídky může přihlášený i nepřihlášený uživatel
+            \item Obsahuje měny a interval obnosu měn které budou směněny
+            \item Lokace nebude zadávána přímo, ale bude brána ta, která je předvyplněna v profilu uživatele \footnote{U nepřihlášeného uživatele se samozřejmě nejedná o profil uživatele, ale data budou ukládána do session.}
+        \end{itemize}
+    \item[F4] Zadání nabídky obsahuje
+        \begin{itemize}
+            \item Měny a částky které budou směněny
+            \item Uživatel nezadává částku do. Ta bude počítána dle aktuálního středního kurzu
+            \item Lokaci, která bude předvyplněna dle adresy z profilu uživatele
+        \end{itemize}
+    \item[F5] Přihlášení uživatele
+        \begin{itemize}
+            \item Uživatelé se budou přihlašovat pouze přes Facebook API
+            \item Registrace není možná
+        \end{itemize}
+    \item[F6] Profil uživatele obsahuje
+        \begin{itemize}
+            \item Jméno uživatele
+            \item Čas posledního přihlášení uživatele
+            \item Hodnocení uživatele
+            \item Profilovou fotku ze sociální sítě Facebook
+            \item Adresu používanou pro směnu peněz
+            \item Rádius pro zadávání a vyhledávání nabídek
+        \end{itemize}
+    \item[F7] Nepřihlášený uživatel je oprávněn
+        \begin{itemize}
+            \item Zobrazit seznam/mapu nabídek
+            \item Filtrovat nabídky dle lokality
+            \item Filtrovat nabídky dle zvolených měn a částek
+            \item Řadit nabídky v podobě seznamu dle definovaných kritérii
+            \item Prohlížet informativní stránky webu
+        \end{itemize}
+\end{itemize}
+
+
+\section{Nefunkční požadavky}
+
+\begin{itemize}
+    \item[N1] Dostupnost přes webové rozhraní
+        \begin{itemize}
+            \item Web bude přístupný na internetu pomocí webového prohlížeče
+        \end{itemize}
+    \item[N2] Dostupnost přes webové API
+        \begin{itemize}
+            \item Bude přístupné API rozhraní pro plánovanou mobilní aplikaci
+        \end{itemize}
+    \item[N3] Responzivní design
+        \begin{itemize}
+            \item Web bude optimalizován pro mobilní zařízení s minimální šířkou displeje 360 px. Pro dosažení větší přehlednosti lze pro displeje s menším rozlišením skrýt prvky, které nejsou nezbytně nutné
+        \end{itemize}
+    \item[N4] Optimalizace v prohlížeči
+        \begin{itemize}
+            \item Web bude optimalizován pro následující webové prohlížeče:
+                \begin{itemize}
+                    \item Google Chrome
+                    \item Internet Explorer od verze 8.0
+                    \item Mozilla Firefox
+                    \item Android mobile
+                    \item Safari
+                \end{itemize}
+        \end{itemize}
+\end{itemize}

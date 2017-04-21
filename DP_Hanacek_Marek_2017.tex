@@ -5,6 +5,12 @@
 \usepackage{dirtree} %directory tree visualisation
 \usepackage{listings}
 \usepackage{multicol}
+\usepackage{tabulary}
+\usepackage{listings}
+\usepackage{color}
+\definecolor {codebg} {rgb} {0.92, 0.92, 0.92}
+\usepackage{minted}
+\usepackage{textcomp}
 
 \input{tex/meta.tex}
 
@@ -12,14 +18,20 @@
 
   \input{tex/introduction.tex}
   \input{tex/analyza-konkurence.tex}
+  \input{tex/requirements.tex}
+  \input{tex/navrh-uzivatelskeho-rozhrani.tex}
+  \input{tex/implementation.tex}
+  \input{tex/testing.tex}
   \input{tex/conclusion.tex}
 
   \bibliographystyle{csn690}
-  \bibliography{mybibliographyfile}
+  \bibliography{ref}
 
   \appendix
   \input{tex/abbrs.tex}
+  \input{tex/rest-api-documentation.tex}
   \input{tex/medium.tex}
 %  \input{tex/temp.tex}
+
 
 \end{document}

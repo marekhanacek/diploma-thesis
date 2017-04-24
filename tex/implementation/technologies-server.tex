@@ -37,7 +37,7 @@ Django ve výchozím nastavení používá vlastní šablonovací systém s krea
 \subsubsection{Modelové třídy}
 
 \paragraph*{Currency} představuje měnu, ze které, respektive do které, lze směnit peníze. Obsahuje název, identifikátor, prefix a postfix.
-\paragraph*{CurrencyRates} představuje kurz mezi dvěma měnami. Obsahuje měnu z, měnu do a daný kurz, který se aktualizuje každou hodinu pomocí služby \url{http://api.fixer.io}.
+\paragraph*{CurrencyRates} představuje kurz mezi dvěma měnami. Obsahuje měnu z, měnu do a daný kurz, který se aktualizuje každou hodinu pomocí služby \textbf{fixer.io}.
 \paragraph*{OfferStatus} - představuje status objednávky, momentálně je jich 5:
 \begin{itemize}
     \item \textbf{Awaiting acceptance} - nabídka čekající na uživatele, který chce směnit peníze
@@ -56,7 +56,7 @@ Jak lze přecházet ze stavu do stavu znázorňuje stavový diagram \ref{fig:imp
     \label{fig:implementation:state-diagram}
 \end{figure}
 
-\paragraph*{Offer} třída představující nabídku na směnu peněz. Obsahuje obě měny, status, oba uživatele, adresu, radius, souřadnice, množství peněz, kurz, komentář k nabídce, čas vytvoření a čas poslední aktualizace.
+\paragraph*{Offer} třída představující nabídku na směnu peněz. Obsahuje obě měny, status, oba uživatele, adresu, rádius, souřadnice, množství peněz, kurz, komentář k nabídce, čas vytvoření a čas poslední aktualizace.
 \paragraph*{Feedback} představuje hodnocení uživatele za danou nabídku. Obsahuje tedy odkaz na nabídku, uživatele, který hodnocení přidal, komentář, počet hvězdiček a čas vytvoření hodnocení.
 \paragraph*{Language} představuje jazyk, do kterého je možné aplikaci přeložit
 \paragraph*{UserProfile} obohacuje třídu výchozího uživatele o tyto parametry: profilový obrázek, domácí měna, druhá měna, preferovaný jazyk, základní textová informace o uživateli, email, telefon, adresa, rádius a souřadnice.
@@ -122,7 +122,7 @@ SOCIAL_AUTH_PIPELINE = (
 
 
 \subsection{Aktualizace kurzů}
-Aktualizace kurzů probíhá vždy jednou za hodinu, a to pomocí služby Fixer.io \cite{fixer-io}. Ukázku požadavku a odpovědi serveru lze najít v ukázce \ref{code:fixer-io}. Kurzy měn se poté ukládají do datábáze.
+Aktualizace kurzů probíhá vždy jednou za hodinu, a to pomocí služby Fixer.io \cite{fixer-io}. Ukázku požadavku a odpovědi serveru lze najít v ukázce \ref{code:fixer-io}. Kurzy měn se poté ukládají do databáze.
 
 \begin{listing}[h]
 \caption{\label{code:fixer-io}Služba Fixer.io - Ukázka požadavku a odpovědi}

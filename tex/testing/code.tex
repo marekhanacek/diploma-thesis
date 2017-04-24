@@ -9,7 +9,7 @@ Django při testování ve výchozím stavu vytváří testovací databázi se s
     \item Nebo pomocí příkazu \texttt{python manage.py dumpdata \\--exclude=contenttypes > fixtures/initial\_data.json}, což vytváří testovací data na základě položek uložených v aktuální databázi. Pomocí parametru \textbf{--exclude} lze definovat položky, které se mají vynechat.
 \end{enumerate}
 
-Výsledný soubor může pak mít podobu jako úkázka kódu \ref{code:fixtures-json}.
+Výsledný soubor může pak mít podobu jako ukázka kódu \ref{code:fixtures-json}.
 
 \begin{listing}[h]
 \caption{\label{code:fixtures-json}Ukázka testovacích dat ve formátu JSON}
@@ -52,7 +52,7 @@ class OfferFacadeTests(BaseTestCase):
 \end{listing}
 
 \subsection{Aserce}
-Asercejsou kontroly nad testovacími daty, které musí být splněny při každém spuštění testů. V Django frameworku to jsou metody s názvem začínajícím na slovo assert. Například assertEqual, assertIsNone, assertTrue, assertFalse, assertGreater, assertGreaterEqual a další. Více informací o assercích naleznete v dokumentaci frameworku \cite{django-testing-tools}.
+Aserce jsou kontroly nad testovacími daty, které musí být splněny při každém spuštění testů. V Django frameworku to jsou metody s názvem začínajícím na slovo assert. Například assertEqual, assertIsNone, assertTrue, assertFalse, assertGreater, assertGreaterEqual a další. Více informací o asercích naleznete v dokumentaci frameworku \cite{django-testing-tools}.
 
 \subsection{Testování pohledů}
 Vytvořil jsem testy pro všechny pohledy v aplikaci. U každého pohledu ověřuji správný návratový kód a přítomnost důležitých elementů na stránce. Testuji také chování aplikace v závislosti na tom, zda je uživatel přihlášen či nikoliv. Netestuji pouze případy, kdy má aplikace skončit úspěchem ale také jsem se snažil psát testy i na ty situace, kdy je požadavek chybný. Testuji také různá chování v závislosti na zvolené HTTP metodě.

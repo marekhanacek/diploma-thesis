@@ -2,7 +2,7 @@
 
 \subsection{Modely}
 \begin{sloppypar}
-Společným předkem všech modelů v~aplikaci je třída \texttt{django.db.models.Model}. Atributy modelů jsou v~ní realizovány pomocí třídních proměnných\footnote{V kontextu relačních databázi je jedná o~sloupce tabulky}, které mají vždy určitý datový typ, který je poinstancí třídy \texttt{django.db.models.Field}. Kromě klasických typů jako je řetězec\footnote{V Django třída \texttt{django.db.models.CharField}.}, celé číslo\footnote{V Django třída \texttt{django.db.models.IntegerField}.} nebo cizí klíč\footnote{V Django třída \texttt{django.db.models.ForeignKey}.}, lze použít například typ \texttt{django.db.models.ImageField}, pomocí kterého aplikace ukládá profilové obrázky uživatelů. Framework Django se stará o~vytvoření složky se těmito soubory a dále také o~ukládání příslušné cesty obrázku do databáze. Modelové třídy jsou mapovány do tabulek v~relační databázi MySQL pomocí \textbf{databázových migrací}.
+Společným předkem všech modelů v~aplikaci je třída \texttt{django.db.models.Model}. Atributy modelů jsou v~ní realizovány pomocí třídních proměnných\footnote{V kontextu relačních databázi je jedná o~sloupce tabulky}, které mají vždy určitý datový typ, který je podinstancí třídy \texttt{django.db.models.Field}. Kromě klasických typů jako je řetězec\footnote{V Django třída \texttt{django.db.models.CharField}.}, celé číslo\footnote{V Django třída \texttt{django.db.models.IntegerField}.} nebo cizí klíč\footnote{V Django třída \texttt{django.db.models.ForeignKey}.}, lze použít například typ \texttt{django.db.models.ImageField}, pomocí kterého aplikace ukládá profilové obrázky uživatelů. Framework Django se stará o~vytvoření složky se těmito soubory a dále také o~ukládání příslušné cesty obrázku do databáze. Modelové třídy jsou mapovány do tabulek v~relační databázi MySQL pomocí \textbf{databázových migrací}.
 \end{sloppypar}
 
 \subsubsection{Databázové migrace}
@@ -12,7 +12,7 @@ Migrace je proces ukládání změn modelových tříd. V~Django frameworku jsou
 Společným předkem pohledů je třída \texttt{django.views.generic.base.View}. V~této třídě je nutné definovat alespoň jednu metodu, jejíž název je totožný s~nějakou HTTP metodou\footnote{HTTP metody jsou get, post, put, patch, delete, head, options a trace}. Příslušná metoda je pak vyvolána pouze v~případě požadavku v~dané HTTP metodě. Vstupním parametrem těchto funkcí je požadavek a případně další parametry z~URL. Návratovou hodnotou je objekt reprezentující HTTP odpověď. Pro vytváření HTTP odpovědi existuje spousta zkratek, z~nichž nejčastěji jsou v~aplikaci použity tyto metody:
 \begin{itemize}
     \item \texttt{django.shortcuts.render} -- Vyžaduje název šablony, která má být vykreslena a dále kontext, neboli data, která jsou předána do šablony.
-    \item \texttt{django.shortcuts.redirect} -- Slouží k~přesměrování na pohled aplikace. Kontext předávaný do šablony lze dále upravovat pomocí tak zvaných \textbf{procesorů kontextu}.
+    \item \texttt{django.shortcuts.redirect} -- Slouží k~přesměrování na pohled aplikace. Kontext předávaný do šablony lze dále upravovat pomocí takzvaných \textbf{procesorů kontextu}.
 \end{itemize}
 
 \subsubsection{Procesory kontextu}

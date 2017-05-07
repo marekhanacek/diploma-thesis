@@ -17,10 +17,10 @@ Mapa obsahuje ukazatel polohy uživatele, kruh znázorňující vyhledávací r�
 Textová část se skládá z~hlavičky, filtračního formuláře, seznamu nabídek s~možností seřazení, tlačítka pro vytvoření nové nabídky a patičky obsahující odkazy na informační stránky.
 
 \subsection{Filtrace nabídek}
-Formulář obsahuje tři základní parametry pomocí nichž lze filtrovat:
+Formulář obsahuje tři základní parametry, pomocí nichž lze filtrovat:
 \begin{itemize}
-	\item Měnu ze které chceme peníze směnit,
-	\item měnu do které chceme peníze směnit,
+	\item Měnu, ze které chceme peníze směnit,
+	\item měnu, do které chceme peníze směnit,
 	\item interval obnosu peněz.
 \end{itemize}
 Filtrace dále bere v~potaz i aktuální, respektive uživatelem zadanou polohu, a rádius. Filtrace se samozřejmě projevuje i v~mapě. Jsou tedy zobrazeny jen ty nabídky, které odpovídají zadaným filtrům.
@@ -60,7 +60,7 @@ Hodnocení se skládá ze dvou složek:
         \begin{itemize}
             \item Za vzdálenost od uživatele může nabídka dostat 0 až 1 bod.
             \item Hodnota se počítá na základě vzdálenosti nejbližší a nejvzdálenější nabídky a dále na základě vzdálenosti právě hodnocené nabídky.
-            \item TODO. Kód pro výpočet této hodnoty lze vidět na ukázce kódu \ref{code:sorting-distance}.
+            \item Kód výpočtu této hodnoty lze vidět v ukázce kódu \ref{code:sorting-distance}.
             \item Čím blíže je tedy nabídka k~zákazníkovi tím lepší hodnocení obdrží.
             \item \textit{Příklad}: V~případě tři nabídek ve vzdálenostech 15~km, 2~km a 28~km, budou hodnocení 0.5, 1 a 0.
         \end{itemize}

@@ -1,0 +1,14 @@
+\section{Odesílání emailů}
+
+\label{nur:mail}
+
+Aplikace odesílá emaily při každé změně stavu nabídky. Konkrétně jsou to tyto:
+\begin{itemize}
+    \item \textbf{Akceptování nabídky} -- Odesílá se autorovi nabídky v momentě akceptování nabídky jiným uživatelem.
+    \item \textbf{Uživatel již nemá zájem o nabídku} -- Odesílá se autorovi nabídky v momentě, kdy druhý uživatel již nemá zájem o nabídku.
+    \item \textbf{Akceptování uživatele} -- Odesílá se uživateli, který se k nabídce připojil v momentě akceptování autorem nabídky.
+    \item \textbf{Odmítnutí uživatele} -- Odesílá se uživateli, který se k nabídce připojil v momentě odmítnutí daného uživatele autorem nabídky.
+    \item \textbf{Již není připravena ke směně} -- Tento email mohou obdržet oba uživatelé a to v momentě, kdy je nabídka ve stavu \textit{Připravena ke směně}, ale jeden z nich nabídku odmítne.
+    \item \textbf{Nabídka byla dokončena} -- Odesílá se v momentě označení objednávky jako \textit{Dokončené} jedním z uživatelů.
+    \item \textbf{K nabídce bylo přidáno hodnocení} -- Odesílá se v momentě přidání hodnocení jedním z uživatelů.
+\end{itemize}

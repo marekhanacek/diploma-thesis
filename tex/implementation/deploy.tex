@@ -1,0 +1,33 @@
+\section{Nasazení aplikace}
+\label{deploy}
+
+Aplikace byla nasazena do cloudu pomocí služby Heroku.com \cite{heroku}. Nasazení probíhalo pomocí vzdáleného repozitáře systému Git ve službě Heroku.com\footnote{Přidáním vzdáleného heroku repozitáře do lokálního Git repozitáře a následně pomocí příkazu \texttt{git push heroku master}.}. K~úspěšnému nasazení aplikace bylo potřeba vytvořit tyto soubory v~kořenovém adresáři projektu:
+\begin{itemize}
+    \item \texttt{Procfile} -- Definuje, spustitelný soubor aplikace.
+    \item \texttt{requirements.txt} -- Obsahuje seznam závislostí aplikace. Při nasazování aplikace jsou tyto závislosti instalovány pomocí systému PIP \cite{pip}. Seznam závislostí je uveden v~ukázce kódu \ref{code:requirements}.
+    \item \texttt{runtime.txt} -- Definuje použitou verzi jazyka Python. V~tomto konkrétním případě je to \texttt{python-3.6.1}.
+\end{itemize}
+
+\begin{listing}[h]
+\caption{\label{code:requirements}Soubor requirements.txt -- Seznam závislostí aplikace}
+\begin{minted}[frame=lines,bgcolor=codebg,fontsize=\footnotesize,linenos,breaklines]{Python}
+defusedxml==0.5.0
+Django==1.11
+djangorestframework==3.6.2
+easy-thumbnails==2.4.1
+gunicorn==19.7.1
+mysqlclient==1.3.7
+oauthlib==2.0.2
+olefile==0.44
+Pillow==4.1.1
+PyJWT==1.5.0
+python3-openid==3.1.0
+pytz==2017.2
+requests==2.13.0
+requests-oauthlib==0.8.0
+six==1.10.0
+social-auth-app-django==1.1.0
+social-auth-core==1.2.0
+whitenoise==3.3.0
+\end{minted}
+\end{listing}

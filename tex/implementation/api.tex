@@ -1,53 +1,25 @@
 \section{REST API}
+Pro implementaci REST API byl zvolen balíček Django REST framework \cite{django-rest-framework}. Základem tohoto balíčku jsou skupiny pohledů a serializery modelových tříd.
 
-\subsection{Nabídky}
-Níže jsou popsány všechny zdroje API, které si týkají nabídek.
+\subsection{Pohledy v~API}
+\begin{sloppypar}
+Pohledy v~kontextu API jsou realizovány pomocí tříd dědících od \texttt{rest\_framework.viewsets.GenericViewSet}. Ta, společně se serializery modelových tříd, poskytuje mechanismus pro vytvoření plně funkčního API pomocí opravdu malého počtu řádek kódu. Nejedná se o~jednotlivé pohledy, ale skupinu pohledů. Je nutné definovat proměnnou \texttt{queryset} určující o~jakou modelovou třídu se jedná a \texttt{serializer\_class} definující serializační třídu. Třída \texttt{rest\_framework.viewsets.GenericViewSet} dále nabízí podporu stránkování, řazení a filtrace.
 
-\subsubsection{GET /api/offer}
-Zdroj pro získávání nabídek. Je zde nastaveno výchozí stránkování po 10 záznamech.
-
-\subsubsection{POST /api/offer}
-Zdroj pro vytvoření nové nabídky.
-
-\subsubsection{GET /api/offer/\{id\}}
-Zdroj pro získání informací o jedné konkrétní nabídce.
-
-\subsubsection{POST /api/offer/\{id\}/\{status\}}
-Tento zdroj slouží pro změnu stavu nabídky. Parametr \texttt{status} lze nahradit jedním z těchto výrazů:
+V~aplikaci jsou pohledy dvojího typu:
+Prvním typem jsou pohledy jen pro čtení. Takové pohledy mají jako předka třídu \texttt{rest\_framework.viewsets.ReadOnlyModelViewSet} a poskytují pouze zdroj pro výpis všech záznamů a zdroj pro výpis jednoho konkrétního záznamu. Konkrétně mezi takové pohledy patří:
 \begin{itemize}
-    \item delete
-    \item accept
-    \item approve
-    \item refuse
-    \item already\_not\_interested
-    \item offer\_again
-    \item complete
+    \item \texttt{CurrencyViewSet} - Definuje zdroje týkající se měn.
+    \item \texttt{LanguageViewSet} - Definuje zdroje týkající se jazyků.
+    \item \texttt{UserViewSet} - Definuje zdroje týkající se uživatelů.
 \end{itemize}
 
-\subsubsection{GET /api/offer/\{id\}/feedback}
-Slouží k získávání dat o hodnoceních, které se týkají dané nabídky.
+Druhým typem jsou pohledy určené pro čtení i zápis. Příkladem tohoto typu je \texttt{OfferViewSet}, jenž se stará o~množinu zdrojů týkajících se nabídek. Třída \texttt{OfferViewSet} oproti pohledům jen pro čtení navíc dědí od třídy \texttt{mixins.CreateModelMixin}, což umožňuje vytvářet nové nabídky.
+\end{sloppypar}
 
-\subsubsection{POST /api/offer/\{id\}/feedback}
-Slouží k přidání nového hodnocení.
+\subsection{Serializery}
+Serializery, jak název napovídá, slouží k~serializaci modelových tříd. Definují, která data se mají v~API zobrazovat. V~proměnné \texttt{fields} lze vyjmenovat všechny atributy modelových tříd, které mají být zobrazeny v~API. Dále pomocí proměnné \texttt{read\_only\_fields} lze definovat atributy, které jsou jen pro čtení a je tedy zamezeno tyto atributy přes API upravovat.
+\\\\
 
-\subsection{Měny}
-Měny nelze pomocí API nijak upravovat, proto existují pouze 2 zdroje, pomocí nichž lze data získávat.
-\subsubsection{GET /api/currency}
-Výpis všech měn.
-\subsubsection{GET /api/currency/\{id\}}
-Výpis konkrétní měny dle zadaného parametru \texttt{id}.
-
-\subsection{Uživatelé}
-\subsubsection{GET /api/user}
-Výpis všech uživatelů aplikace.
-\subsubsection{GET /api/user/\{id\}}
-Výpis konkrétního uživatele.
-\subsubsection{GET /register-by-token/facebook/}
-Tento zdroj slouží pro oznámení o registraci/přihlášení přes facebook pomocí mobilní aplikace, případně pomocí nějaké další třetí strany. Je potřeba uvést v url parametr \texttt{access-token}, pomocí kterého si aplikace zjistí další informace z API Facebooku.
-
-\subsection{Jazyky}
-Stejně jako měny, tak i jazyky nelze pomocí API nijak upravovat, proto existují pouze 2 zdroje, pomocí nichž lze data získávat.
-\subsubsection{GET /api/language}
-Výpis všech jazyků.
-\subsubsection{GET /api/language/\{id\}}
-Výpis konkrétního jazyka.
+\begin{sloppypar}
+Kompletní dokumentace API je dostupná na adrese \href{https://mhdip.herokuapp.com/api/docs/}{https://mhdip.herokuapp.com/api/docs/}.
+\end{sloppypar}

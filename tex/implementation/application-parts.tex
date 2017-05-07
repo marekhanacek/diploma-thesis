@@ -1,0 +1,117 @@
+\section{Části aplikace}
+
+\subsection{Modely}
+\begin{sloppypar}
+Společným předkem všech modelů v~aplikaci je třída \texttt{django.db.models.Model}. Atributy modelů jsou v~ní realizovány pomocí třídních proměnných\footnote{V kontextu relačních databázi je jedná o~sloupce tabulky}, které mají vždy určitý datový typ, který je poinstancí třídy \texttt{django.db.models.Field}. Kromě klasických typů jako je řetězec\footnote{V Django třída \texttt{django.db.models.CharField}.}, celé číslo\footnote{V Django třída \texttt{django.db.models.IntegerField}.} nebo cizí klíč\footnote{V Django třída \texttt{django.db.models.ForeignKey}.}, lze použít například typ \texttt{django.db.models.ImageField}, pomocí kterého aplikace ukládá profilové obrázky uživatelů. Framework Django se stará o~vytvoření složky se těmito soubory a dále také o~ukládání příslušné cesty obrázku do databáze. Modelové třídy jsou mapovány do tabulek v~relační databázi MySQL pomocí \textbf{databázových migrací}.
+\end{sloppypar}
+
+\subsubsection{Databázové migrace}
+Migrace je proces ukládání změn modelových tříd. V~Django frameworku jsou migrace realizovány pomocí tříd, které tyto změny uchovávají. Po jakékoliv změně v~modelových třídách je nutné nejprve vytvořit migrační třídy pomocí příkazu \mbox{\texttt{python manage.py makemigrations}} a poté vytvořené migrace spustit pomocí příkazu \mbox{\texttt{python manage.py migrate}}. Spuštěním migrací se upraví struktura databáze v~MySQL dle modelových tříd. Není tedy nutné tyto migrace psát ručně, či jakkoliv upravovat schéma databáze. Programátor je tak plně odstíněn od psaní dotazů v~MySQL.
+
+\subsection{Pohledy}
+Společným předkem pohledů je třída \texttt{django.views.generic.base.View}. V~této třídě je nutné definovat alespoň jednu metodu, jejíž název je totožný s~nějakou HTTP metodou\footnote{HTTP metody jsou get, post, put, patch, delete, head, options a trace}. Příslušná metoda je pak vyvolána pouze v~případě požadavku v~dané HTTP metodě. Vstupním parametrem těchto funkcí je požadavek a případně další parametry z~URL. Návratovou hodnotou je objekt reprezentující HTTP odpověď. Pro vytváření HTTP odpovědi existuje spousta zkratek, z~nichž nejčastěji jsou v~aplikaci použity tyto metody:
+\begin{itemize}
+    \item \texttt{django.shortcuts.render} -- Vyžaduje název šablony, která má být vykreslena a dále kontext, neboli data, která jsou předána do šablony.
+    \item \texttt{django.shortcuts.redirect} -- Slouží k~přesměrování na pohled aplikace. Kontext předávaný do šablony lze dále upravovat pomocí tak zvaných \textbf{procesorů kontextu}.
+\end{itemize}
+
+\subsubsection{Procesory kontextu}
+\begin{sloppypar}
+Procesory kontextu jsou metody, které mohou upravit kontext předávaný do šablony. Typickým příkladem použití procesorů kontextu v~aplikace je situace, kdy je potřeba použít vybranou proměnnou ve všech šablonách aplikace\footnote{Může se jednat například o~informace o~aktuálně přihlášeném uživateli, příznak, zda zobrazit upozornění o~užívání cookies a další.}. Jaké procesory kontextu se použijí lze definovat v~konfiguračním souboru \texttt{settings.py} pomocí konfigurační proměnné \texttt{TEMPLATES.OPTIONS.context\_processors}.
+\end{sloppypar}
+
+
+\subsection{Šablony}
+Django ve výchozím nastavení používá vlastní šablonovací systém nazvaný \textbf{Django template language (DTL)}. Poskytuje spoustu funkcí, které usnadňují vývoj na úrovni šablon. Za zmínku jistě stojí možnost dědění šablon, automatické escapování proměnných\footnote{Escapování je převod znaků majících v~daném kontextu speciální význam na jiné odpovídající sekvence proměnných \cite{escape}.} a nebo třeba velké množství filtrů. Příklad použití šablon lze vidět v~ukázce \ref{code:django-template}.
+
+\begin{listing}[htbp]
+\caption{\label{code:django-template}Ukázka šablony ve frameworku Django}
+\begin{minted}[frame=lines,bgcolor=codebg,fontsize=\footnotesize,linenos,breaklines]{HTML}
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>MicroXchange {{ global }}</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+</head>
+<body>
+    <h1>Homepage</h1>
+    {% if variable %}
+        <p>Donec sollicitudin molestie malesuada.</p>
+    {% else %}
+        <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. </p>
+    {% endif %}
+    {% block content %}{% endblock %}
+</body>
+</html>
+\end{minted}
+\end{listing}
+
+Aplikace obsahuje 2 hlavní šablony -- pro zobrazení bez mapy a pro zobrazení s~mapou. Hlavní šablony obsahují odkazy na CSS soubory, JS soubory a všechny nutné elementy stránky, které jsou zobrazeny na všech podstránkách. Od těchto hlavních šablon pak dědí všechny konkrétní šablony. Dědění šablon je v~aplikaci implementováno pomocí definice bloku \texttt{content} v~hlavní i konkrétní šabloně a dále uvedením tagu \texttt{extends} v~konkrétní šabloně\footnote{Tag extends je nutné umístit na samotný začátek souboru.} definujeme, jakou šablonu rozšiřujeme. V~následujících podkapitolách jsou popsány další nástroje týkající se šablon, které aplikace používá.
+
+\subsubsection{Filtry}
+Filtry usnadňují prezentaci dat v~šablonách. Díky filtrům se šablony stávají kratší, přehlednější a tím pádem lépe čitelné. Filtry lze v~šablonách použít tímto způsobem: \mbox{\texttt{\{\{ nazevPromenne|nazevFiltru \}\}}}. V~aplikaci jsou kromě filtrů definovaných frameworkem Django definovány tyto filtry:
+\begin{itemize}
+    \item \texttt{format\_offer\_currency\_from} a \texttt{format\_offer\_currency\_to} - Vstupním parametrem je objekt nabídky, výstupem pak je zformátovaný obnos peněz v~určité měně.
+    \item \texttt{print\_verified} - Vstupním parametrem je objekt uživatele, v~případě, že je uživatel ověřený, filtr přidá do HTML kódu ikonu ověření.
+    \item \texttt{print\_stars} - Vypisuje počet hvězdiček určený vstupním parametrem.
+\end{itemize}
+
+\subsubsection{Přiřazovací tagy}
+\begin{sloppypar}
+Pomocí přiřazovacích tagů lze přímo v~šabloně přiřazovat výrazy do proměnné. Aplikace přiřazovacích tagů využívá v~případě, kdy je nutné zavolat funkci, která očekává parametry, což v~šablonách ve frameworku Django není možné. Syntaxe přiřazovacích tagu je následující: \mbox{\texttt{\{\% is\_user\_verified offer.user\_created as is\_verified \%\}}}. V~aplikaci jsou implementovány tyto přiřazovací tagy:
+\begin{itemize}
+    \item \texttt{is\_user\_verified} - Zjišťuje zda je uživatel ověřený.
+    \item \texttt{get\_other\_user} - Vstupním parametrem je nabídka a uživatel, výstupem je druhý uživatel, který je přiřazen k~nabídce.
+    \item \texttt{get\_offer\_distance\_from} - Vypočítává vzdálenost nabídky od zadané polohy.
+    \item \texttt{format\_price} - Formátuje číslo jako měnu.
+\end{itemize}
+\end{sloppypar}
+
+\subsubsection{Statické soubory}
+Statickými soubory jsou myšleny veškeré zdroje, na které odkazuje HTML kód\footnote{Těmi jsou kasdádové styly, JavaScriptové soubory, obrázky a další}. Pomocí tagu \texttt{static} lze takové soubory používat v~šablonách. Ve vývojovém prostředí používá aplikace statické soubory ze složky \texttt{web/static}. Před nasazením aplikace do produkčního prostředí je nutné spustit příkaz \mbox{\texttt{python manage.py collectstatic}}, který přesune statické soubory všech aplikací projektu do adresáře \texttt{static} v~kořenovém adresáři. O~následné zobrazení statických souborů se poté již nestará framework Django, ale webový server Apache.
+
+\subsection{URL adresy}
+URL adresy projektu jsou definovány v~souboru \texttt{dip/urls.py}, ve kterém jsou dále definovány URL adresy všech potřebných aplikací. V~každé aplikaci opět existuje soubor \texttt{urls.py}. Každá URL\footnote{URL adresy, případně vzoru URL adres, jsou definovány pomocí regulárních výrazů.} je spojena vždy s~jedním pohledem. Aplikace definuje tyto url adresy:
+\begin{itemize}
+    \item \texttt{/} -- Hlavní stránka aplikace.
+    \item \texttt{/offer/sort/\{sorting\}} -- Úprava řazení výpisu nabídek.
+    \item \texttt{/offer/detail/\{id\}} -- Detail nabídky.
+    \item \texttt{/feedback/\{id\}} -- Adresa pro přidání hodnocení k~dané nabídce.
+    \item \texttt{/offer/new} - -Nová nabídka.
+    \item \texttt{/offer/delete/\{id\}} -- Změna stavu nabídky.
+    \item \texttt{/offer/accept/\{id\}} -- Změna stavu nabídky.
+    \item \texttt{/offer/approve/\{id\}} -- Změna stavu nabídky.
+    \item \texttt{/offer/refuse/\{id\}} -- Změna stavu nabídky.
+    \item \texttt{/offer/already-not-interested/\{id\}} -- Změna stavu nabídky.
+    \item \texttt{/offer/offer-again/\{id\}} -- Změna stavu nabídky.
+    \item \texttt{/offer/complete/\{id\}} -- Změna stavu nabídky.
+    \item \texttt{/user-profile} -- Profil aktuálně přihlášeného uživatele.
+    \item \texttt{/user/\{id\}} -- Profil ostatních uživatelů.
+    \item \texttt{/change-location} -- Změna adresy uživatele.
+    \item \texttt{/user/change-preferences} -- Změna údajů přihlášeného uživatele.
+    \item \texttt{/page/\{id\}} -- Informační stránky.
+    \item \texttt{/exchange-rate/\{currency\_from\}/\{currency\_to\}} -- Aktuální kurz.
+    \item \texttt{/login/facebook} -- Přihlášení uživatele pomocí Facebook API.
+    \item \texttt{/logout} -- Odhlášení uživatele.
+    \item \texttt{/api} -- Prefix pro URL adresy týkající se API. Tyto URL adresy jsou blíže popsány v~kapitole \ref{rest-api-design} na straně \pageref{rest-api-design}.
+\end{itemize}
+
+\subsection{Middleware}
+Middleware je třída, pomocí které je možné upravit požadavek ještě před zpracováním v~pohledu. Aplikace middleware používá pro ukládání vstupní polohy uživatele do session\footnote{Session jsou data uživatele uložena na serveru -- konkrétně ve frameworku Django v~databázi.}. Vstupní poloha uživatele se pak dále v~řadě pohledů.
+
+\subsection{Formuláře}
+\begin{sloppypar}
+Formuláře v~aplikaci jsou definovány pomocí tříd rozšiřujících třídu \texttt{django.forms.Form}.
+Aplikace definuje tyto formuláře:
+\begin{itemize}
+    \item \texttt{OfferSearchForm} -- Sloužící k~vyhledávání nabídek.
+    \item \texttt{OfferForm} -- Slouží k~vytvoření nové nabídky.
+    \item \texttt{FeedbackForm} -- Slouží k~přidání hodnocení k~nabídce.
+    \item \texttt{ChangePreferencesForm} -- Slouží k~úpravě osobních preferencí přihlášeného uživatele.
+\end{itemize}
+Všechny formuláře jsou zpracovávány pomocí HTTP metody POST, která vyžaduje ve formuláři uvedení CSRF tokenu, který zabraňuje útokům Cross-site request forgery\footnote{Cross-site request forgery (CSRF) je typ útoku, kdy útočník zneužívá důvěru jiného uživatele ve stránku k~docílení provedení akce určené například jen pro administrátory systémů.}. CSRF token se do formuláře přidá pomocí tagu \mbox{\texttt{\{\% csrf\_token \%\}}} a o~jeho ověření se stará framework Django sám.
+\end{sloppypar}

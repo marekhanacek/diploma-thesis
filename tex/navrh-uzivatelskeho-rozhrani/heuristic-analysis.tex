@@ -1,19 +1,19 @@
-\section{Testování uživatelského rozhraní}
+\section{Heuristická analýza}
 
 \label{nur:test}
 
-Testování uživatelského rozhraní budu provádět pomocí heuristické analýzy. Heuristická analýza obsahuje 10 bodů, které by mělo splňovat každé uživatelské rozhraní. Jsou to tyto \cite{nur-heu}
+Testování uživatelského rozhraní je prováděno pomocí heuristické analýzy. Heuristická analýza obsahuje 10 bodů, které by mělo splňovat každé uživatelské rozhraní. Jsou to tyto \cite{nur-heu}:
 
 \begin{itemize}
     \item 1. Viditelnost stavu systému
         \begin{itemize}
-            \item System nesmí zůstat zamrzlý a nereagovat na uživatelské vstupy
+            \item Systém nesmí zůstat zamrzlý a nereagovat na uživatelské vstupy
             \item Zobrazit progress bar
-            \item Uživatel musí být informován o tom, co systém dělá
+            \item Uživatel musí být informován o~tom, co systém dělá
         \end{itemize}
     \item 2. Shoda mezi systémem a realitou
         \begin{itemize}
-            \item Zachováni konvenci (a metafor) reálného světa
+            \item Zachováni konvencí (a metafor) reálného světa
             \item Desktop...
             \item Ikony (a metafory) se musí chovat jako to, co zobrazují / na co odkazují
             \item Do koše mohu věci nejen vyhodit, ale lze ho i vysypat, případně ho prohledat a vytáhnout už jednou vyhozenou věc
@@ -24,13 +24,13 @@ Testování uživatelského rozhraní budu provádět pomocí heuristické anal�
             \item „Nic se nemůže pokazit“
             \item Vždy je možnost vrátit se zpět do předchozího stavu – Undo
             \item Nejlépe univerzální undo – historie
-            \item Uživatele vice experimentuji a rychleji se učí
+            \item Uživatelé více experimentují a rychleji se učí
             \item Uživatel ovládá systém, ne naopak
-            \item Zrušeni dlouho trvajících operaci (rollback)
-            \item Potvrzováni akci
+            \item Zrušení dlouho trvajících operací (rollback)
+            \item Potvrzování akcí
             \item Varováni před provedením nevratné akce
         \end{itemize}
-    \item 4. Shoda s použitou platformou a obecnými standardy
+    \item 4. Shoda s~použitou platformou a obecnými standardy
         \begin{itemize}
             \item Program pod Windows vypadá a chová se jako pod Windows. Nijak jinak.
             \item Pokud to jde, použit standardní systémové komponenty
@@ -40,12 +40,12 @@ Testování uživatelského rozhraní budu provádět pomocí heuristické anal�
         \end{itemize}
     \item 5. Prevence chyb
         \begin{itemize}
-            \item Uživatel by neměl být možnost zadat špatnou hodnotu
+            \item Uživatel by neměl mít možnost zadat špatnou hodnotu
             \item Následná chybová hláška to zachrání jen částečně
-            \item Pokud je způsob zadáváni z principu složitější, je třeba to na místě vysvětlit (in-line help text, hint)
-            \item Např. Sila hesla
+            \item Pokud je způsob zadáváni z~principu složitější, je třeba to na místě vysvětlit (in-line help text, hint)
+            \item Např. Síla hesla
             \item Zvýraznit povinné položky formulářů
-            \item Potvrzováni akci
+            \item Potvrzování akcí
         \end{itemize}
     \item 6. Kouknu a vidím
         \begin{itemize}
@@ -59,26 +59,26 @@ Testování uživatelského rozhraní budu provádět pomocí heuristické anal�
         \end{itemize}
     \item 7. Flexibilita a efektivita
         \begin{itemize}
-            \item Zkušení vs. běžní uživatele
+            \item Zkušení vs. běžní uživatelé
             \item To co zkušený uživatel pravidelně potřebuje, běžný kolikrát ani nepotřebuje vědět
             \item Pokročilý (Advanced) mód
             \item Klávesové zkratky / funkční klávesy
             \item Makra
-            \item Klonováni existujících záznamů (templates)
-            \item Jsou opravdu všechny akce/nastaveni potřeba?
+            \item Klonování existujících záznamů (templates)
+            \item Jsou opravdu všechny akce/nastavení potřeba?
         \end{itemize}
     \item 8. Minimalita (Klapky na očích)
         \begin{itemize}
-            \item Zobrazovat pouze informaci, která aktuálně k něčemu opravdu je.
-            \item Čim méně možnosti uživatel má, tím rychleji koná
+            \item Zobrazovat pouze informaci, která aktuálně k~něčemu opravdu je.
+            \item Čim méně možností uživatel má, tím rychleji koná
             \item (Nepotřebná) grafika by neměla zastiňovat ovládáni a účel
-            \item Cokoliv je zobrazeno soutěži o uživatelovu pozornost
+            \item Cokoliv je zobrazeno soutěží o~uživatelovu pozornost
             \item Je třeba nechat vyhrát to důležité
         \end{itemize}
     \item 9. Smysluplné chybové hlášky
         \begin{itemize}
             \item Nejlepší je nedojít do stavu kdy je třeba chybového hlášení
-            \item Chybové hlášení v běžném jazyce – žádné kódy
+            \item Chybové hlášení v~běžném jazyce – žádné kódy
             \item Chybové hlášení by mělo popsat co se stalo špatně, jak se to stalo a jak tomu příště předejít.
             \item Případně možná řešení doporučit
             \item Mělo by poučit (vzdělat) uživatele
@@ -87,27 +87,24 @@ Testování uživatelského rozhraní budu provádět pomocí heuristické anal�
         \begin{itemize}
             \item Systém by měl být použitelný bez jakékoliv nápovědy, nicméně…
             \item Nápověda musí být
-            \item Musí podporovat funkci vyhledáváni
+            \item Musí podporovat funkci vyhledávání
             \item Spíše než popisem by se měla zabývat příklady
             \item Kontextová nápověda
         \end{itemize}
 \end{itemize}
 
 \subsection{Nalezené problémy}
-Nalezené problémy jsou shrnuty v tabulce \ref{tab:heuristic-analysis}. Každý z nalezených problémů jsem hodnotil na stupnici 1 - 10, kde 1 znamená málo závažný problém a oproti tomu 10 značí velmi závažný problém. Pro všechny nalezené problémy také navrhuji způsob řešení, jak problém odstranit. Všechny nalezené problémy jsem před dalším vývojem aplikace vyřešil.
+Nalezené problémy jsou shrnuty v~tabulce \ref{tab:heuristic-analysis}. Každý z~nalezených problémů je hodnocen na stupnici 1 - 5, kde 1 znamená málo závažný problém a oproti tomu 5 značí velmi závažný problém. Pro všechny nalezené problémy je také navržen způsob řešení vedoucí k~odstranění problému. Všechny nalezené problémy byly před dalším vývojem aplikace vyřešeny.
 
-\begin{table}
+\begin{table}[!h]
     \caption{Problémy nalezené při heuristické analýze}\label{tab:heuristic-analysis}
     \begin{tabulary}{1.0\textwidth}{|L|L|L|L|}
         \hline
-        Bod analýzy & Nalezený problém & Závažnost problému (1 - 10) & Řešení problému \\ \hline\hline
-        4. & Sjednotit názvosloví offer a transaction & 10 & V rámci celého webu se nyní používá výraz offer \\ \hline
-%        5. & Feedback - není ošetřen vstup & 10 & Přidat kontrolu, zda uživatel zadal komentář \\ \hline
-        5. & Nejsou zvýrazněny povinné položky formulářů & 8 & Byla přidána červená * k povinným položkám formulářů. \\ \hline
-%        6. & Zvážit přidání bread crumb & 3  & \\ \hline
-        6. & Nelze rozpoznat, podle čeho se řadí & 8 & Odstraněn odkaz z aktuálního řazení. \\ \hline
-        9. & Špatná chybová hláška na stránce Login required & 6 & Napsat, proč se uživatel musí přihlásit \\ \hline
-        10. & Chybí nápověda o postupu práce s nabídkou & 7 & Stránka “How it works?” s krátkým popis + stavový diagram transakce \\ \hline
+        Bod analýzy & Nalezený problém & Závažnost problému (1 -- 5) & Řešení problému \\ \hline\hline
+        4. & Sjednotit výrazy \textit{offer} a \textit{transaction}. & 2 & V~rámci celého webu se nyní používá výraz \textit{offer}. \\ \hline
+        5. & Nejsou zvýrazněny povinné položky formulářů. & 3 & Byla přidána červená * k~povinným položkám formulářů. \\ \hline
+        6. & Nelze rozpoznat, podle čeho se řadí. & 4 & Byl odstraněn odkaz z~aktuálního řazení. Došlo tak k~barevnému odlišení textů. \\ \hline
+        10. & Chybí nápověda o~postupu práce s~nabídkou. & 4 & Byla přidána stránka \textit{Jak to funguje?} s~popisem a stavovým diagramem transakce. \\ \hline
     \end{tabulary}
 \end{table}
 

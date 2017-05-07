@@ -1,5 +1,38 @@
-\chapter{Testování}
+\chapter{Testování aplikace s~uživateli}
+\label{user-testing2}
 
-\input{tex/testing/code.tex}
-\newpage
-\input{tex/testing/user.tex}
+Testování uživatelského rozhraní probíhalo ve dvou fázích. První testování bylo prováděno v~rámci projektu v~předmětu \textit{MI-NUR} na FIT ČVUT na prototypu navrženého uživatelského rozhraní. Průběh testování a vyvozené změny v~aplikaci již byly popsány v~kapitole \ref{user-testing} na straně \pageref{user-testing}.
+
+Ve druhé fázi byla testována již kompletně implementovaná aplikace. K~testování byla připravena testovací data tak, aby vyhovovala potřebám úkolů. Testování probíhalo se třemi osobami, na které čekaly tyto úkoly:
+
+\begin{enumerate}
+    \item Máte k~dispozici 10 000 Kč, které chcete směnit pomocí této aplikace na eura. Nalezněte nejlepší nabídku v~okolí vaší aktuální polohy, případně v~okolí vašeho trvalého bydliště.
+    \item Předpokládejme, že žádná nabídka z~předchozího kroku vám nevyhovuje. Vytvořte takovou nabídku.
+\end{enumerate}
+
+Následuje seznam zjištěným problémů a připomínek a jejich následné řešení.
+
+\begin{enumerate}
+    \item \textbf{Nelze spojit nabídku ze seznamu spolu s~nabídkou v~mapě} -- Výpis byl upraven tak, že při najetí myší na danou nabídku ve výpise začne odpovídající ukazatel polohy v~mapě poskakovat. V~opačném případě, tedy při najetí myší na ukazatel polohy, se podbarví šedě pole s~danou nabídkou.
+    \item \textbf{Rozlišení nabídek ověřených uživatelů od ostatních} -- Byly navrhnuty dva typy ukazatelů nabídek v~mapě. Jeden pro nabídky od normálních uživatelů (viz obrázek \ref{fig:marker}) a druhý pro nabídky od ověřených uživatelů (viz obrázek \ref{fig:marker-verified}).
+    \item \textbf{Není vidět průměrné hodnocení uživatele v~detailu nabídky při zobrazení s~mapou} -- Zde se jedná o~nepozornost autora. Hodnocení bylo v~této fázi viditelné jen v~zobrazení bez mapy.
+    \item \textbf{Nejsou vyplněna výchozí data ve formuláři pro přidání nabídky} -- Data formuláře jsou nyní předvyplněna dle dat v~uživatelském profilu.
+    \item \textbf{Přidána možnost prohodit měny ve vyhledávání}.
+    \item \textbf{Uživatel se nemůže do systému zaregistrovat, jelikož nemá účet v~systému Facebook} -- Byla přidána druhá možnost registrace a to pomocí manuálního zadání údajů uživatele.
+\end{enumerate}
+
+\begin{figure}[!h]\centering
+    \begin{subfigure}[!h]{0.4\textwidth}
+        \centering
+        \includegraphics{media/marker.png}
+        \caption{Ukazatel polohy nabídky na mapě od neověřeného uživatele}
+        \label{fig:marker}
+    \end{subfigure}
+    \begin{subfigure}[!h]{0.4\textwidth}
+        \centering
+        \includegraphics{media/marker-verified.png}
+        \caption{Ukazatel polohy nabídky na mapě od ověřeného uživatele}
+        \label{fig:marker-verified}
+    \end{subfigure}
+    \caption{Ukazatelé poloh na mapě}
+\end{figure}

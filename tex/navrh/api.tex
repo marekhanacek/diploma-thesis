@@ -1,0 +1,86 @@
+\pagebreak
+\section{Návrh REST API}\label{rest-api-design}
+V~následujících podkapitolách jsou uvedeny všechny zdroje spolu s~příslušnou HTTP metodou. Navržené API se drží principů REST API.
+
+\subsection{GET /api/offer}
+Zdroj pro získávání nabídek s~možností filtrace, stránkování a řazení pomocí parametrů v~URL adrese. Těmito parametry jsou:
+\begin{itemize}
+    \item Povinné parametry:
+    \begin{itemize}
+        \item \texttt{currency\_from} -- Měna z,
+        \item \texttt{currency\_to} -- Měna do,
+        \item \texttt{lat} -- Zeměpisná šířka,
+        \item \texttt{lng} -- Zeměpisná délka,
+        \item \texttt{radius} -- Rádius pro vyhledávání.
+    \end{itemize}
+    \item Nepovinné parametry:
+    \begin{itemize}
+        \item \texttt{amount\_from} -- Rozsah peněz od,
+        \item \texttt{amount\_to} -- Rozsah peněz do,
+        \item \texttt{page} -- Stránka.
+    \end{itemize}
+\end{itemize}
+
+\subsection{POST /api/offer}
+Zdroj pro vytvoření nové nabídky. V~těle požadavku je potřeba uvést tyto parametry:
+\begin{itemize}
+    \item \texttt{lat} -- Zeměpisná šířka,
+    \item \texttt{lng} -- Zeměpisná délka,
+    \item \texttt{radius} -- Rádius pro vyhledávání,
+    \item \texttt{amount} -- Rozsah peněz od,
+    \item \texttt{comment} -- Komentář k~nabídce,
+    \item \texttt{currency\_from} -- Měna z,
+    \item \texttt{currency\_to} -- Měna do,
+    \item \texttt{address} -- Adresa.
+\end{itemize}
+
+\subsection{GET /api/offer/\{id\}}
+Zdroj pro získání informací o~jedné konkrétní nabídce.
+
+\subsection{POST /api/offer/\{id\}/\{status\}}
+Tento zdroj slouží pro změnu stavu nabídky. Parametr \texttt{status} lze nahradit jedním z~těchto výrazů:
+\begin{itemize}
+    \item delete,
+    \item accept,
+    \item approve,
+    \item refuse,
+    \item already\_not\_interested,
+    \item offer\_again,
+    \item complete.
+\end{itemize}
+
+\subsection{GET /api/offer/\{id\}/feedback}
+Slouží k~získávání dat o~hodnoceních, které se týkají dané nabídky. Výstup nelze řadit, filtrovat ani stránkovat.
+
+\subsection{POST /api/offer/\{id\}/feedback}
+Slouží k~přidání nového hodnocení. Vstupní parametry lze vypozorovat z~definice modelové třídy Feedback.
+
+\subsection{GET /api/currency}
+Výpis všech měn. Pokud je počet záznamů větší než 10, pak je výpis stránkován po 10 záznamech.
+
+\subsection{GET /api/currency/\{id\}}
+Výpis konkrétní měny dle zadaného parametru \texttt{id}.
+
+\subsection{GET /api/user}
+Výpis všech uživatelů aplikace. Výpis je stránkován po 10 záznamech. Stránkování lze měnit pomocí parametru \texttt{page}.
+
+\subsection{GET /api/user/\{id\}}
+Výpis konkrétního uživatele dle zadaného parametru \texttt{id}.
+
+\subsection{GET /api/user/\{id\}/finished\_offers}
+Seznam dokončených nabídek daného uživatele.
+
+\subsection{GET /api/user/\{id\}/user\_reaction}
+Seznam nabídek čekající na reakci daného uživatele.
+
+\subsection{GET /api/user/\{id\}/other\_user\_reaction}
+Seznam nabídek čekajících na reakci jiných uživatelů.
+
+\subsection{GET /api/user/login/facebook}
+Tento zdroj slouží pro oznámení o~registraci/přihlášení přes Facebook pomocí mobilní aplikace. Je potřeba uvést v~url parametr \texttt{access-token}, pomocí kterého si aplikace zjistí další potřebné informace z~API Facebooku.
+
+\subsection{GET /api/language}
+Výpis všech jazyků. Pokud je počet záznamů větší než 10, pak je výpis stránkován po 10 záznamech.
+
+\subsection{GET /api/language/\{id\}}
+Výpis konkrétního jazyka dle zadaného parametru \texttt{id}.

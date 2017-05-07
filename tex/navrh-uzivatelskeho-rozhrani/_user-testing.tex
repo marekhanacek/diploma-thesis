@@ -1,0 +1,103 @@
+\section{Testování uživatelského rozhraní s~uživateli}
+\label{user-testing}
+Pro testování s~uživateli jsem připravil 10 úkolů, u~kterých očekávám, že budou ty nejčastější úkony na stránce. Testování jsem prováděl s~pěti osobami.
+\subsection{Úkoly}
+
+\begin{enumerate}
+    \item Přihlaste se do systému.
+    \item Změňte jazyk na češtinu.
+    \item Zobrazte kontaktní informace.
+    \item Zobrazte profil uživatele Jim Beam.
+    \item Napište zprávu uživateli Jim Beam.
+    \item Změňte adresu na vaši aktuální.
+    \item Máte k~dispozici 10 000 CZK a chcete je směnit na EURa. Nalezněte nejlepší nabídku a potvrďte zájem o~tuto nabídku.
+    \item Žádná z~nabídek se vám nelibí, vytvořte ji.
+    \item Představte si situaci, že jste vyměnili s~jiným uživatelem peníze. Nabídka je tedy ve stavu Ready to exchange. Zaznamenejte tuto aktivitu do systému.
+    \item Přidejte hodnocení ke směně v~předchozím kroku. Nabídka je nyní ve stavu Finished.
+\end{enumerate}
+
+\subsection{Představení testovaných osob}
+
+\begin{itemize}
+    \item Žena A~-- 22 let, pracující, směnárnu použila jednou v~životě, zkušený uživatel v~oblasti webu a sociálních sítí
+    \item Muž B -- 53 let, pracující, méně zkušený uživatel v~oblasti webu a sociálních sítí, směnárnu užívá 1x za rok
+    \item Žena C -- 49 let, pracující, méně zkušený uživatel v~oblasti webu a sociálních sítí, směnárnu nikdy nepoužila
+    \item Muž D -- 23 let, student FEL ČVUT, směnárnu používá několikrát za rok, zkušený uživatel v~oblasti webu, hodně cestuje
+    \item Muž E -- 28 let, pracující, směnárnu používá několikrát do roka, hodně cestuje, zkušený uživatel v~oblasti webu
+\end{itemize}
+
+\section{Shrnutí testování}
+Výsledky testování a nalezené problémy můžete najít tabulkách \ref{tab:test-person-A}, \ref{tab:test-person-B}, \ref{tab:test-person-C}, \ref{tab:test-person-D} a \ref{tab:test-person-E}. Z~testování vyplývají tyto změny v~aplikaci:
+
+\begin{itemize}
+    \item Zvážit přidání vyhledávacího pole do hlavičky
+    \item Tlačítko pro potvrzení akce -- přidat ikonu potvrzení
+    \item Na stránce Messages text Type text here … pouze jako placeholder
+    \item Přidat tlačítko pro změnu adresy i do podstránek
+    \item Detail nabídky
+    \begin{itemize}
+        \item Designově “znehodnotit” sekci History with you
+        \item Zvýraznit pole s~informacemi o~nabídce
+        \item Jiné barvy pro různá tlačítka
+    \end{itemize}
+\end{itemize}
+
+Všechny výše uvedené změny jsem aplikoval do aplikace.
+
+
+\begin{table}[h]
+    \caption{Problémy nalezené při testování osoby A}\label{tab:test-person-A}
+    \begin{tabulary}{1.0\textwidth}{|L|L|L|L|}
+        \hline
+        \textbf{Číslo úkolu} & \textbf{Popis problému} & \textbf{Závažnost problému} \\ \hline\hline
+        5 & Nevšimla si, že musí smazat původní text & 5 \\ \hline
+        6 & Jako jediný z~testovaných měnila adresu přes stránku Change preferences & 5 \\ \hline
+        10 & Dle uživatele je detail nabídky nepřehledný. & 5 \\ \hline
+    \end{tabulary}
+\end{table}
+
+\begin{table}[h]
+    \caption{Problémy nalezené při testování osoby B}\label{tab:test-person-B}
+    \begin{tabulary}{1.0\textwidth}{|L|L|L|L|}
+        \hline
+        \textbf{Číslo úkolu} & \textbf{Popis problému} & \textbf{Závažnost problému} \\ \hline\hline
+        4 & Uživatel hledal vyhledávací pole, kam může zadat hledaný výraz. Později si všiml, že se na úvodní stránce nachází odkaz na Jimův profil. & 8 \\ \hline
+        5 & Na stránce se zprávami déle hledal pole pro zadání zprávy a nevšiml si, že musí smazat původní text & 5 \\ \hline
+        7 & Při vyhledávání nabídek si myslel, že tlačítko New offer slouží pro potvrzení vyhledávání & 8 \\ \hline
+        9 & Velmi dlouho hledal tlačítko pro potvrzení transakce. Hodně pozornosti věnoval sekci History with you. & 7 \\ \hline
+    \end{tabulary}
+\end{table}
+
+\begin{table}[h]
+    \caption{Problémy nalezené při testování osoby C}\label{tab:test-person-C}
+    \begin{tabulary}{1.0\textwidth}{|L|L|L|L|}
+        \hline
+        \textbf{Číslo úkolu} & \textbf{Popis problému} & \textbf{Závažnost problému} \\ \hline\hline
+        2 & Uživatel klikl na ikonu Google Translatoru v~Google Chrome pro přeložení & 0 \\ \hline
+        3 & Úkol trval nad očekávání velmi dlouho & 1 \\ \hline
+        4 & Uživatel hledal vyhledávací pole, kam může zadat hledaný výraz. Později si všiml, že se na úvodní stránce nachází odkaz na Jimův profil. & 8 \\ \hline
+        6 & Uživatel nevěděl kde má změnit svou adresu. Později tlačítko našel. & 6 \\ \hline
+        7 & Vyhledání nejlepší nabídky proběhlo v~pořádku ale, nemohla najít tlačítko pro potvrzení nabídek, což je způsobeno neznalostí anglického jazyka & 8 \\ \hline
+        9 & Opět velmi dlouho hledala tlačítko pro potvrzení transakce. Pozornost brala sekce History with you. & 7 \\ \hline
+    \end{tabulary}
+\end{table}
+
+\begin{table}[h]
+    \caption{Problémy nalezené při testování osoby D}\label{tab:test-person-D}
+    \begin{tabulary}{1.0\textwidth}{|L|L|L|L|}
+        \hline
+        \textbf{Číslo úkolu} & \textbf{Popis problému} & \textbf{Závažnost problému} \\ \hline\hline
+        5 & Nevšiml si, že musí smazat původní text & 5 \\ \hline
+        10 & Jako jediný použil možnost nejprve rozkliknout nabídku, až poté zadal své hodnocení. & 0 \\ \hline
+    \end{tabulary}
+\end{table}
+
+\begin{table}[h]
+    \caption{Problémy nalezené při testování osoby E}\label{tab:test-person-E}
+    \begin{tabulary}{1.0\textwidth}{|L|L|L|L|}
+        \hline
+        \textbf{Číslo úkolu} & \textbf{Popis problému} & \textbf{Závažnost problému} \\ \hline\hline
+        6 & Možnost změny adresy hledal na stránce z~předchozího úkolu -- Messages. & 8 \\ \hline
+        7 & Poukázal na to, že by v~tlačítku pro potvrzení měla být ikona & 8 \\ \hline
+    \end{tabulary}
+\end{table}

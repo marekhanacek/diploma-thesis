@@ -1,0 +1,50 @@
+\section{Struktura projektu}
+Struktura projektu zobrazená na diagramu \ref{project-structure} obsahuje soubory týkající se celého projektu,  a dále funkční celky nazvané \textbf{aplikace}. Projekt využívá více aplikací, ale v~rámci diplomové práce byla implementována jedna -- aplikace \texttt{web}, která je určena jak pro webovou aplikaci, tak pro implementaci API. Struktura aplikace \texttt{web} je zobrazena na diagramu \ref{structure-web}.
+
+\begin{figure}[h]
+	\dirtree{%
+		.1 dip\DTcomment{adresář s~konfigurací projektu}.
+            .2 settings.py\DTcomment{konfigurační soubor}.
+            .2 settings\_local.py\DTcomment{lokální konfigurační soubor}.
+            .2 settings\_local\_example.py\DTcomment{příklad lokálního konfiguračního souboru}.
+            .2 urls.py\DTcomment{definice url adres projektu}.
+            .2 wsgi.py\DTcomment{wsgi aplikace}.
+		.1 fixtures\DTcomment{adresář s~testovacími daty}.
+		.1 locale\DTcomment{adresář s~překlady}.
+            .2 cs\DTcomment{adresář s~překlady do Češtiny}.
+            .2 en\DTcomment{adresář s~překlady do Angličtiny}.
+            .2 sk\DTcomment{adresář s~překlady do Slovenštiny}.
+		.1 media\DTcomment{soubory od uživatelů}.
+		.1 static\DTcomment{statické soubory projektu}.
+		.1 web\DTcomment{zdrojové kódy aplikace web}.
+        .1 .gitignore\DTcomment{seznam souborů ignorovaných systémem git}.
+        .1 manage.py\DTcomment{hlavní soubor projektu}.
+	}
+	\caption{Struktura projektu}
+    \label{project-structure}
+\end{figure}
+
+\begin{figure}[h]
+	\dirtree{%
+        .1 web.
+        .2 management\DTcomment{příkazy příkazového řádku}.
+        .2 middleware\DTcomment{middlewary}.
+        .2 migrations\DTcomment{migrace}.
+        .2 service\DTcomment{servisní třídy}.
+        .2 static\DTcomment{statické soubory aplikace}.
+        .2 templates\DTcomment{šablony}.
+        .2 templatetags\DTcomment{tagy šablon}.
+        .2 tests\DTcomment{testy}.
+        .2 views\DTcomment{pohledy}.
+        .2 apps.py\DTcomment{konfigurace aplikace}.
+        .2 bower.json\DTcomment{konfigurační soubor nástroje Bower.io}.
+        .2 context\_processors.py\DTcomment{procesory kontextu}.
+        .2 forms.py\DTcomment{formuláře}.
+        .2 models.py\DTcomment{modelové třídy}.
+        .2 pipeline.py\DTcomment{roury}.
+        .2 serializers.py\DTcomment{serializery API}.
+        .2 urls.py\DTcomment{definice url adres}.
+	}
+	\caption{Struktura projektu}
+    \label{structure-web}
+\end{figure}

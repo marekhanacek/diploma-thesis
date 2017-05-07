@@ -1,0 +1,57 @@
+\section{Přihlašování přes Facebook}
+
+\begin{sloppypar}
+Jedním z~požadavků na aplikaci bylo přihlášení pomocí sociální sítě Facebook. To Django přímo nepodporuje, ale existuje balíček Python Social Auth \cite{python-social-auth}, který poskytuje autentizační a autorizační mechanismy pro několik frameworků a několik služeb, přes které se lze přihlásit.
+
+Implementace je následující:
+\begin{enumerate}
+    \item Nejprve je potřeba vytvořit aplikaci na stránce Facebook for Developers \cite{facebook-developers}, pomocí které bude probíhat přihlašování uživatelů. Zde se vygenerují dva klíče, které je potřeba později uvést v~konfiguraci balíčku -- \texttt{FACEBOOK\_KEY} a \texttt{FACEBOOK\_SECRET}.
+    \item Poté je potřeba do konfiguračního souboru \texttt{settings.py} přidat několik důležitých konfiguračních parametrů. Viz ukázka kódu \ref{code:facebook-settings}.
+    \item Následuje definice url adres: Do souboru \texttt{urls.py} je potřeba přidat tento řádek: \mbox{\texttt{url('', include('social\_django.urls', namespace='social'))}}, který zajistí propojení URL adres s~požadovanými pohledy.
+    \item Poté je nutné spustit migrace databáze pomocí příkazu \\\texttt{python manage.py migrate}.
+    \item Poté v~šabloně vytvoříme odkaz, pomocí kterého se budou uživatelé přihlašovat.
+\end{enumerate}
+\end{sloppypar}
+
+\begin{listing}[h]
+\caption{\label{code:facebook-settings}Konfigurace přihlášení přes Facebook}
+\begin{minted}[frame=lines,bgcolor=codebg,fontsize=\footnotesize,linenos,breaklines]{Python}
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+)
+
+SOCIAL_AUTH_FACEBOOK_KEY = 'FACEBOOK_KEY'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'FACEBOOK_SECRET'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'locale': 'cs_CZ',
+    'fields': 'id, name, email, age_range'
+}
+
+SOCIAL_AUTH_PIPELINE = (
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.auth_allowed',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.get_username',
+    'social_core.pipeline.social_auth.associate_by_email',
+    'social_core.pipeline.user.create_user',
+    'web.pipeline.save_profile_picture',
+    'web.pipeline.save_preferences_to_session',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details'
+)
+\end{minted}
+\end{listing}
+
+\subsection{Autentizační proces}
+Po návratu do aplikace z~API Facebooku aplikace postupně volá několik metod zvané roury\footnote{Roury (pipeline), jsou metody, které se volají postupně jedna za druhou, přičemž výstup jedné roury je vstupem druhé.}.
+\begin{itemize}
+    \item Aplikace definuje 2 roury:
+    \begin{enumerate}
+        \item \texttt{save\_profile\_picture} -- Metoda se stará o~uložení profilového obrázku.
+        \item \texttt{save\_preferences\_to\_session} -- Nastavuje preference uživatelů do session.
+    \end{enumerate}
+\end{itemize}

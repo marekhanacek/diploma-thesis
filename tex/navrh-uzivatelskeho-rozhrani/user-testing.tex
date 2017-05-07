@@ -1,0 +1,62 @@
+\section{Testování uživatelského rozhraní s~uživateli}
+\label{user-testing}
+Pro testování s~uživateli bylo připraveno 9 úkolů, u~kterých se očekává, že budou ty nejčastější úkony na stránce. Testování bylo provedeno s~pěti osobami.
+\subsection{Úkoly}
+
+\begin{enumerate}
+    \item Přihlaste se do systému.
+    \item Změňte jazyk na češtinu.
+    \item Zobrazte kontaktní informace.
+    \item Zobrazte profil uživatele Jim Beam.
+    \item Změňte adresu na vaši aktuální.
+    \item Máte k~dispozici 10 000 českých korun a chcete je směnit na eura. Nalezněte nejlepší nabídku a potvrďte zájem o~tuto nabídku.
+    \item Žádná z~nabídek se vám nelibí, vytvořte ji.
+    \item Představte si situaci, že jste vyměnili s~jiným uživatelem peníze. Nabídka je tedy ve stavu \textit{Ready to exchange}. Zaznamenejte tuto aktivitu do systému.
+    \item Přidejte hodnocení ke směně v~předchozím kroku. Nabídka je nyní ve stavu \textit{Finished}.
+\end{enumerate}
+
+\subsection{Představení testovaných osob}
+
+\begin{itemize}
+    \item Osoba A~-- 22 let, pracující, směnárnu použila jednou v~životě, zkušený uživatel v~oblasti webu a sociálních sítí.
+    \item Osoba B -- 53 let, pracující, méně zkušený uživatel v~oblasti webu a sociálních sítí, směnárnu užívá 1x za rok.
+    \item Osoba C -- 49 let, pracující, méně zkušený uživatel v~oblasti webu a sociálních sítí, směnárnu nikdy nepoužila.
+    \item Osoba D -- 23 let, student FEL ČVUT, směnárnu používá několikrát za rok, zkušený uživatel v~oblasti webu, hodně cestuje.
+    \item Osoba E -- 30 let, pracující, směnárnu používá několikrát do roka, hodně cestuje, zkušený uživatel v~oblasti webu.
+\end{itemize}
+
+\section{Shrnutí testování}
+Výsledky testování a nalezené problémy jsou uvedeny v~tabulce \ref{tab:test-results}. Z~testování vyplynuly tyto změny v~aplikaci, které byly do aplikace zakomponovány:
+
+\begin{itemize}
+%    \item Zvážit přidání vyhledávacího pole do hlavičky.
+    \item Tlačítko pro potvrzení akce -- přidat ikonu potvrzení.
+    \item Přidat tlačítko pro změnu adresy i do podstránek.
+    \item V~detail nabídky byly provedeny tyto změny:
+    \begin{itemize}
+        \item Zvýraznit pole s~informacemi o~nabídce.
+        \item Jiné barvy pro různá tlačítka.
+    \end{itemize}
+\end{itemize}
+
+\begin{table}[h]
+    \caption{Problémy nalezené při testování}\label{tab:test-results}
+    \begin{tabulary}{1.0\textwidth}{|c|c|L|}
+        \hline
+        \textbf{Osoba} & \textbf{Úkol} & \textbf{Popis problému} \\ \hline\hline
+        A~& 5 & Uživatel jako jediný z~testovaných měnil adresu přes stránku \textit{Změna údajů (Change preferences)} v~uživatelském profilu. \\ \hline
+%        A & 9 & Dle uživatele je detail nabídky nepřehledný.  \\ \hline
+
+        B & 4 & Uživatel hledal vyhledávací pole, kam může zadat hledaný výraz. Později si všiml, že se na úvodní stránce nachází odkaz na Jimův profil. \\ \hline
+        B & 6 & Při vyhledávání nabídek si uživatel myslel, že tlačítko New offer slouží pro potvrzení vyhledávání \\ \hline
+        B & 8 & Uživatel velmi dlouho hledal tlačítko pro potvrzení transakce. Hodně pozornosti věnoval sekci \textit{Historie s~uživatelem (History with user)}. \\ \hline
+
+        C & 2 & Uživatel klikl na ikonu Google Translator v~prohlížeči pro přeložení.  \\ \hline
+        C & 3 & Úkol trval nad očekávání velmi dlouho.  \\ \hline
+        C & 5 & Uživatel nevěděl kde má změnit svou adresu. Později tlačítko našel.  \\ \hline
+        C & 6 & Vyhledání nejlepší nabídky proběhlo v~pořádku ale, nemohla najít tlačítko pro potvrzení nabídek, což bylo způsobeno neznalostí anglického jazyka. \\ \hline
+
+        E & 5 & Možnost změny adresy hledal na stránce z~předchozího úkolu -- \textit{Profil uživatele}.  \\ \hline
+        E & 6 & Poukázal na to, že by v~tlačítku pro potvrzení měla být ikona.  \\ \hline
+    \end{tabulary}
+\end{table}

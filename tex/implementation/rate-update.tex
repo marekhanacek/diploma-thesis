@@ -1,0 +1,19 @@
+\section{Aktualizace kurzů}
+Aplikace k~aktualizaci kurzů používá příkazy příkazové řádky, což třídy dědící od \texttt{django.core.management.base.BaseCommand}, které jsou umístěny v~modulu \texttt{web.management.commands}. Obsahují proměnnou \texttt{help} obsahující krátký popis a metodu handle, která se stará o~samotné zpracování.
+\\\\
+Aktualizace kurzů probíhá vždy jednou za hodinu, a to pomocí služby Fixer.io \cite{fixer-io}. Ukázku požadavku a odpovědi serveru lze najít v~ukázce \ref{code:fixer-io}. Kurzy měn jsou ukládány do databáze.
+
+\begin{listing}[h]
+\caption{\label{code:fixer-io}Služba Fixer.io -- Ukázka požadavku a odpovědi}
+\begin{minted}[frame=lines,bgcolor=codebg,fontsize=\footnotesize,linenos,breaklines]{Python}
+GET http://api.fixer.io/latest?symbols=USD,GBP&base=EUR
+{
+    "base": "EUR",
+    "date": "2017-04-20",
+    "rates": {
+        "GBP": 0.8392,
+        "USD": 1.0745
+    }
+}
+\end{minted}
+\end{listing}

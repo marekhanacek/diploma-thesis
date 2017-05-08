@@ -1,6 +1,6 @@
 \pagebreak
 \section{Návrh REST API}\label{rest-api-design}
-V~následujících podkapitolách jsou uvedeny všechny zdroje spolu s~příslušnou HTTP metodou. Navržené API se drží principů REST API.
+V~následujících podkapitolách jsou uvedeny všechny zdroje spolu s~příslušnou HTTP metodou.
 
 \subsection{GET /api/offer}
 Zdroj pro získávání nabídek s~možností filtrace, stránkování a řazení pomocí parametrů v~URL adrese. Těmito parametry jsou:
@@ -38,18 +38,7 @@ Zdroj pro vytvoření nové nabídky. V~těle požadavku je potřeba uvést tyto
 Zdroj pro získání informací o~jedné konkrétní nabídce.
 
 \subsection{PATCH /api/offer/\{id\}/}
-Tento zdroj slouží k částečné úpravě nabídky. Aplikace konkrétně umožňuje pouze změnu stavu nabídky. V těle požadavku musí být uveden parametr \texttt{action}, který může nabývat jedné z těchto hodnot:
-\begin{itemize}
-    \item delete,
-    \item accept,
-    \item approve,
-    \item refuse,
-    \item already\_not\_interested,
-    \item offer\_again,
-    \item complete.
-\end{itemize}
-
-Tyto hodnoty odpovídají názvům akcí pro změny statusů z diagramu \ref{fig:implementation:state-diagram} na straně \pageref{fig:implementation:state-diagram}. Příklad požadavku je pak uveden v ukázce kódu \ref{code:api-status-change}.
+Tento zdroj slouží k částečné úpravě nabídky. Aplikace konkrétně umožňuje pouze změnu stavu nabídky. V těle požadavku musí být uveden parametr \texttt{status} (Jeho hodnota musí id z modelové třídy \texttt{OfferStatus}). Změny statusů musí odpovídat akcím z diagramu \ref{fig:implementation:state-diagram} na straně \pageref{fig:implementation:state-diagram}. Příklad požadavku je uveden v ukázce kódu \ref{code:api-status-change}.
 
 \begin{listing}[htbp]
 \caption{\label{code:api-status-change}Ukázka změny statusu přes API}
@@ -57,7 +46,7 @@ Tyto hodnoty odpovídají názvům akcí pro změny statusů z diagramu \ref{fig
 PATCH /api/offer/123/
 
 {
-    "action":"delete"
+    "status":2
 }
 \end{minted}
 \end{listing}
@@ -79,7 +68,7 @@ Výpis konkrétního uživatele dle zadaného parametru \texttt{id}.
 Seznam dokončených nabídek daného uživatele.
 
 \subsection{GET /api/user/\{id\}/user\_reaction}
-Seznam nabídek čekající na reakci daného uživatele.
+Seznam nabídek čekajících na reakci daného uživatele.
 
 \subsection{GET /api/user/\{id\}/other\_user\_reaction}
 Seznam nabídek čekajících na reakci jiných uživatelů.
@@ -98,3 +87,9 @@ Výpis všech měn. Pokud je počet záznamů větší než 10, pak je výpis st
 
 \subsection{GET /api/currency/\{id\}}
 Výpis konkrétní měny dle zadaného parametru \texttt{id}.
+
+\subsection{GET /api/status}
+Výpis všech statusů nabídek.
+
+\subsection{GET /api/status/\{id\}}
+Výpis konkrétního statusu nabídky dle zadaného parametru \texttt{id}.

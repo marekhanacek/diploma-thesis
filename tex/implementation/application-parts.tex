@@ -81,7 +81,7 @@ URL adresy projektu jsou definovány v~souboru \texttt{dip/urls.py}, ve kterém 
     \item \texttt{/offer/sort/\{sorting\}} -- Úprava řazení výpisu nabídek.
     \item \texttt{/offer/detail/\{id\}} -- Detail nabídky.
     \item \texttt{/feedback/\{id\}} -- Adresa pro přidání hodnocení k~dané nabídce.
-    \item \texttt{/offer/new} - -Nová nabídka.
+    \item \texttt{/offer/new} -- Nová nabídka.
     \item \texttt{/offer/delete/\{id\}} -- Změna stavu nabídky.
     \item \texttt{/offer/accept/\{id\}} -- Změna stavu nabídky.
     \item \texttt{/offer/approve/\{id\}} -- Změna stavu nabídky.
@@ -113,5 +113,5 @@ Aplikace definuje tyto formuláře:
     \item \texttt{FeedbackForm} -- Slouží k~přidání hodnocení k~nabídce.
     \item \texttt{ChangePreferencesForm} -- Slouží k~úpravě osobních preferencí přihlášeného uživatele.
 \end{itemize}
-Všechny formuláře jsou zpracovávány pomocí HTTP metody POST, která vyžaduje ve formuláři uvedení CSRF tokenu, který zabraňuje útokům Cross-site request forgery\footnote{Cross-site request forgery (CSRF) je typ útoku, kdy útočník zneužívá důvěru jiného uživatele ve stránku k~docílení provedení akce určené například jen pro administrátory systémů.}. CSRF token se do formuláře přidá pomocí tagu \mbox{\texttt{\{\% csrf\_token \%\}}} a o~jeho ověření se stará framework Django sám.
+Všechny formuláře jsou zpracovávány pomocí HTTP metody POST, která vyžaduje ve formuláři uvedení CSRF tokenu, který zabraňuje útokům Cross-site request forgery\footnote{Cross-site request forgery (CSRF) je typ útoku, kdy útočník zneužívá důvěru jiného uživatele ve stránku k~docílení provedení akce určené například jen pro administrátory systémů \cite{csrf}.}. CSRF token se do formuláře přidá pomocí tagu \mbox{\texttt{\{\% csrf\_token \%\}}} a o~jeho ověření se stará framework Django sám.
 \end{sloppypar}

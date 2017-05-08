@@ -10,11 +10,11 @@ Požadavky vychází jak ze zadání, tak z~analýzy podobných webových služe
 \begin{itemize}
     \item[\textbf{F1}] Nabídka pro směnu peněz obsahuje:
         \begin{itemize}
-            \item měny, které budou směněny,
-            \item částky v~jednotlivých měnách,
-            \item adresu a rádius pro vyhledávání,
-            \item komentář k~nabídce,
-            \item hodnocení uživatele za dokončenou nabídku.
+            \item Měny, které budou směněny.
+            \item Částky v~jednotlivých měnách.
+            \item Adresu a poloměr pro vyhledávání.
+            \item Komentář k~nabídce.
+            \item Hodnocení uživatele za dokončenou nabídku.
         \end{itemize}
     \item[\textbf{F2}] Hodnocení nabídky/uživatele:
         \begin{itemize}
@@ -28,7 +28,7 @@ Požadavky vychází jak ze zadání, tak z~analýzy podobných webových služe
         \begin{itemize}
             \item Vyhledávat nabídky může přihlášený i nepřihlášený uživatel.
             \item Obsahuje měny a interval obnosu měn, které budou směněny.
-            \item Lokace nebude zadávána přímo, ale bude brána ta, která je předvyplněna v~profilu uživatele\footnote{U nepřihlášeného uživatele se samozřejmě nejedná o~profil uživatele, ale data budou ukládána do session.}.
+            \item Lokace nebude zadávána přímo, ale bude brána ta, která je předvyplněna v~profilu uživatele\footnote{V případě nepřihlášeného uživatele se nejedná o profil uživatele, ale o~data, která jsou uložena v rámci relace.}.
         \end{itemize}
     \item[\textbf{F4}] Vytváření nabídky:
         \begin{itemize}
@@ -39,16 +39,16 @@ Požadavky vychází jak ze zadání, tak z~analýzy podobných webových služe
     \item[\textbf{F5}] Přihlášení uživatele:
         \begin{itemize}
             \item Uživatelé se budou přihlašovat pouze přes Facebook API.
-            \item Registrace není možná.
+            \item Klasická registrace pomocí uživatelského jména a hesla není možná. Samostatná registrace, pro tuto aplikaci sice smysl dává, ale v rozsahu této práce, po domluvě s vedoucím práce, nebude implementována.
         \end{itemize}
     \item[\textbf{F6}] Profil uživatele obsahuje:
         \begin{itemize}
-            \item jméno uživatele,
-            \item čas posledního přihlášení uživatele,
-            \item hodnocení uživatele,
-            \item profilovou fotku ze sociální sítě Facebook,
-            \item adresu používanou pro směnu peněz,
-            \item rádius pro zadávání a vyhledávání nabídek.
+            \item Jméno uživatele.
+            \item Čas posledního přihlášení uživatele.
+            \item Hodnocení uživatele.
+            \item Profilovou fotku ze sociální sítě Facebook.
+            \item Adresu používanou pro směnu peněz.
+            \item Poloměr pro zadávání a vyhledávání nabídek.
         \end{itemize}
     \item[\textbf{F7}] Nepřihlášený uživatel je oprávněn:
         \begin{itemize}
@@ -80,10 +80,10 @@ Požadavky vychází jak ze zadání, tak z~analýzy podobných webových služe
         \begin{itemize}
             \item Web bude testován v~následujících webových prohlížečích:
                 \begin{itemize}
-                    \item Google Chrome,
-                    \item Internet Explorer od verze 8.0,
-                    \item Mozilla Firefox,
-                    \item Android mobile,
+                    \item Google Chrome.
+                    \item Internet Explorer od verze 8.0.
+                    \item Mozilla Firefox.
+                    \item Android mobile.
                     \item Safari.
                 \end{itemize}
         \end{itemize}

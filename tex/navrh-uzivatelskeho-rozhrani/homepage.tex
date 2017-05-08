@@ -11,7 +11,7 @@ Stránka používá rozvržení webu s~mapou. Podobu stránky lze vidět na obr�
 \end{figure}
 
 \subsection{Mapa}
-Mapa obsahuje ukazatel polohy uživatele, kruh znázorňující vyhledávací rádius a ukazatele poloh nabídek. Ukazatel polohy uživatele a poloh nabídek jsou barevně odlišeny.
+Mapa obsahuje ukazatel polohy uživatele, kruh znázorňující vyhledávací poloměr a ukazatele poloh nabídek. Ukazatel polohy uživatele a poloh nabídek jsou barevně odlišeny.
 
 \subsection{Textová část}
 Textová část se skládá z~hlavičky, filtračního formuláře, seznamu nabídek s~možností seřazení, tlačítka pro vytvoření nové nabídky a patičky obsahující odkazy na informační stránky.
@@ -23,7 +23,7 @@ Formulář obsahuje tři základní parametry, pomocí nichž lze filtrovat:
 	\item měnu, do které chceme peníze směnit,
 	\item interval obnosu peněz.
 \end{itemize}
-Filtrace dále bere v~potaz i aktuální, respektive uživatelem zadanou polohu, a rádius. Filtrace se samozřejmě projevuje i v~mapě. Jsou tedy zobrazeny jen ty nabídky, které odpovídají zadaným filtrům.
+Filtrace dále bere v~potaz i aktuální, respektive uživatelem zadanou polohu, a poloměr. Filtrace se samozřejmě projevuje i v~mapě. Jsou tedy zobrazeny jen ty nabídky, které odpovídají zadaným filtrům.
 
 \subsection{Řazení nabídek}
 Vidno na obrázku \ref{fig:tur:sorting}. Nabídky lze seřadit čtyřmi různými způsoby:
@@ -49,8 +49,8 @@ Hodnocení se skládá ze dvou složek:
             \item Jestliže má uživatel měně než dvě hodnocení, pak je tato hodnota rovna 0.
             \item Jestliže má uživatel dvě a více hodnocení, pak se hodnota odvíjí od průměrného počtu hvězdiček. Za špatné hodnocení je penalizován, za dobré hodnocení pak odměněn kladnými body. Konkrétně\footnote{Uvedené hodnocení a penalizace jsou založeny na základě experimentálního zkoumání řazení s~velkým množstvím testovacích dat.}:
             \begin{itemize}
-                \item 1 hvězdička $\rightarrow$ penalizace -1.5,
-                \item 2 hvězdičky $\rightarrow$ penalizace -1,
+                \item 1 hvězdička $\rightarrow$ penalizace $-1.5$,
+                \item 2 hvězdičky $\rightarrow$ penalizace $-1$,
                 \item 3 hvězdičky $\rightarrow$ hodnocení je rovno 0.6,
                 \item 4 hvězdičky $\rightarrow$ hodnocení je rovno 0.8,
                 \item 5 hvězdiček $\rightarrow$ hodnocení je rovno 1.
@@ -61,7 +61,7 @@ Hodnocení se skládá ze dvou složek:
             \item Za vzdálenost od uživatele může nabídka dostat 0 až 1 bod.
             \item Hodnota se počítá na základě vzdálenosti nejbližší a nejvzdálenější nabídky a dále na základě vzdálenosti právě hodnocené nabídky.
             \item Kód výpočtu této hodnoty lze vidět v ukázce kódu \ref{code:sorting-distance}.
-            \item Čím blíže je tedy nabídka k~zákazníkovi tím lepší hodnocení obdrží.
+            \item Čím blíže je tedy nabídka k~zákazníkovi, tím lepší hodnocení obdrží.
             \item \textit{Příklad}: V~případě tři nabídek ve vzdálenostech 15~km, 2~km a 28~km, budou hodnocení 0.5, 1 a 0.
         \end{itemize}
 \end{itemize}

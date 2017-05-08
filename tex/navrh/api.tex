@@ -11,7 +11,7 @@ Zdroj pro získávání nabídek s~možností filtrace, stránkování a řazen�
         \item \texttt{currency\_to} -- Měna do,
         \item \texttt{lat} -- Zeměpisná šířka,
         \item \texttt{lng} -- Zeměpisná délka,
-        \item \texttt{radius} -- Rádius pro vyhledávání.
+        \item \texttt{radius} -- Poloměr pro vyhledávání.
     \end{itemize}
     \item Nepovinné parametry:
     \begin{itemize}
@@ -26,7 +26,7 @@ Zdroj pro vytvoření nové nabídky. V~těle požadavku je potřeba uvést tyto
 \begin{itemize}
     \item \texttt{lat} -- Zeměpisná šířka,
     \item \texttt{lng} -- Zeměpisná délka,
-    \item \texttt{radius} -- Rádius pro vyhledávání,
+    \item \texttt{radius} -- Poloměr pro vyhledávání,
     \item \texttt{amount} -- Rozsah peněz od,
     \item \texttt{comment} -- Komentář k~nabídce,
     \item \texttt{currency\_from} -- Měna z,
@@ -37,8 +37,8 @@ Zdroj pro vytvoření nové nabídky. V~těle požadavku je potřeba uvést tyto
 \subsection{GET /api/offer/\{id\}}
 Zdroj pro získání informací o~jedné konkrétní nabídce.
 
-\subsection{POST /api/offer/\{id\}/\{status\}}
-Tento zdroj slouží pro změnu stavu nabídky. Parametr \texttt{status} lze nahradit jedním z~těchto výrazů:
+\subsection{PATCH /api/offer/\{id\}/}
+Tento zdroj slouží k částečné úpravě nabídky. Aplikace konkrétně umožňuje pouze změnu stavu nabídky. V těle požadavku musí být uveden parametr \texttt{action}, který může nabývat jedné z těchto hodnot:
 \begin{itemize}
     \item delete,
     \item accept,
@@ -49,17 +49,25 @@ Tento zdroj slouží pro změnu stavu nabídky. Parametr \texttt{status} lze nah
     \item complete.
 \end{itemize}
 
+Tyto hodnoty odpovídají názvům akcí pro změny statusů z diagramu \ref{fig:implementation:state-diagram} na straně \pageref{fig:implementation:state-diagram}. Příklad požadavku je pak uveden v ukázce kódu \ref{code:api-status-change}.
+
+\begin{listing}[htbp]
+\caption{\label{code:api-status-change}Ukázka změny statusu přes API}
+\begin{minted}[frame=lines,bgcolor=codebg,fontsize=\footnotesize,linenos,breaklines]{PYTHON}
+PATCH /api/offer/123/
+
+{
+    "action":"delete"
+}
+\end{minted}
+\end{listing}
+
+
 \subsection{GET /api/offer/\{id\}/feedback}
 Slouží k~získávání dat o~hodnoceních, které se týkají dané nabídky. Výstup nelze řadit, filtrovat ani stránkovat.
 
 \subsection{POST /api/offer/\{id\}/feedback}
-Slouží k~přidání nového hodnocení. Vstupní parametry lze vypozorovat z~definice modelové třídy Feedback.
-
-\subsection{GET /api/currency}
-Výpis všech měn. Pokud je počet záznamů větší než 10, pak je výpis stránkován po 10 záznamech.
-
-\subsection{GET /api/currency/\{id\}}
-Výpis konkrétní měny dle zadaného parametru \texttt{id}.
+Slouží k~přidání nového hodnocení k dané nabídce. Vstupní parametry lze vypozorovat z~definice modelové třídy Feedback.
 
 \subsection{GET /api/user}
 Výpis všech uživatelů aplikace. Výpis je stránkován po 10 záznamech. Stránkování lze měnit pomocí parametru \texttt{page}.
@@ -84,3 +92,9 @@ Výpis všech jazyků. Pokud je počet záznamů větší než 10, pak je výpis
 
 \subsection{GET /api/language/\{id\}}
 Výpis konkrétního jazyka dle zadaného parametru \texttt{id}.
+
+\subsection{GET /api/currency}
+Výpis všech měn. Pokud je počet záznamů větší než 10, pak je výpis stránkován po 10 záznamech.
+
+\subsection{GET /api/currency/\{id\}}
+Výpis konkrétní měny dle zadaného parametru \texttt{id}.

@@ -2,96 +2,91 @@
 
 \label{nur:test}
 
-Testování uživatelského rozhraní je prováděno pomocí heuristické analýzy. Heuristická analýza obsahuje 10 bodů, které by mělo splňovat každé uživatelské rozhraní. Jsou to tyto \cite{nur-heu}:
+Testování uživatelského rozhraní je prováděno pomocí heuristické analýzy. Heuristická analýza obsahuje 10 bodů, které by mělo splňovat každé uživatelské rozhraní. Jak udává zdroj [7], jsou to tyto:
 
-\begin{itemize}
-    \item 1. Viditelnost stavu systému
+\begin{enumerate}
+    \item Viditelnost stavu systému
         \begin{itemize}
-            \item Systém nesmí zůstat zamrzlý a nereagovat na uživatelské vstupy
-            \item Zobrazit progress bar
-            \item Uživatel musí být informován o~tom, co systém dělá
+            \item Systém nesmí zůstat zamrzlý a nereagovat na uživatelské vstupy.
+            \item Zobrazit ukazatel průběhu.
+            \item Uživatel musí být informován o~tom, co systém dělá.
         \end{itemize}
-    \item 2. Shoda mezi systémem a realitou
+    \item Shoda mezi systémem a realitou
         \begin{itemize}
-            \item Zachováni konvencí (a metafor) reálného světa
-            \item Desktop...
-            \item Ikony (a metafory) se musí chovat jako to, co zobrazují / na co odkazují
-            \item Do koše mohu věci nejen vyhodit, ale lze ho i vysypat, případně ho prohledat a vytáhnout už jednou vyhozenou věc
-            \item Pozor na překlady
+            \item Zachováni konvencí (a metafor) reálného světa.
+            \item Ikony (a metafory) se musí chovat jako to, co zobrazují / na co odkazují.
+            \item Do koše mohu věci nejen vyhodit, ale lze ho i vysypat, případně ho prohledat a vytáhnout už jednou vyhozenou věc.
+            \item Pozor na překlady.
         \end{itemize}
-    \item 3. Minimální zodpovědnost (a stres)
+    \item Minimální zodpovědnost (a stres)
         \begin{itemize}
-            \item „Nic se nemůže pokazit“
-            \item Vždy je možnost vrátit se zpět do předchozího stavu – Undo
-            \item Nejlépe univerzální undo – historie
-            \item Uživatelé více experimentují a rychleji se učí
-            \item Uživatel ovládá systém, ne naopak
-            \item Zrušení dlouho trvajících operací (rollback)
-            \item Potvrzování akcí
-            \item Varováni před provedením nevratné akce
+            \item Nic se nemůže pokazit.
+            \item Vždy je možnost vrátit se zpět do předchozího stavu.
+            \item Uživatelé více experimentují a rychleji se učí.
+            \item Uživatel ovládá systém, ne naopak.
+            \item Zrušení dlouho trvajících operací.
+            \item Potvrzování akcí.
+            \item Varováni před provedením nevratné akce.
         \end{itemize}
-    \item 4. Shoda s~použitou platformou a obecnými standardy
+    \item Shoda s~použitou platformou a obecnými standardy
         \begin{itemize}
             \item Program pod Windows vypadá a chová se jako pod Windows. Nijak jinak.
-            \item Pokud to jde, použit standardní systémové komponenty
-            \item Systémové barvy a fonty
-            \item Používat stejné termíny
-            \item Vysvětlit zkratky („Nastavte BPU!“)
+            \item Pokud to jde, použit standardní systémové komponenty.
+            \item Systémové barvy a typy písem.
+            \item Používat stejné termíny.
+            \item Vysvětlit zkratky.
         \end{itemize}
-    \item 5. Prevence chyb
+    \item Prevence chyb
         \begin{itemize}
-            \item Uživatel by neměl mít možnost zadat špatnou hodnotu
-            \item Následná chybová hláška to zachrání jen částečně
-            \item Pokud je způsob zadáváni z~principu složitější, je třeba to na místě vysvětlit (in-line help text, hint)
-            \item Např. Síla hesla
-            \item Zvýraznit povinné položky formulářů
-            \item Potvrzování akcí
+            \item Uživatel by neměl mít možnost zadat špatnou hodnotu.
+            \item Následná chybová hláška to zachrání jen částečně.
+            \item Pokud je způsob zadáváni z~principu složitější, je třeba to na místě vysvětlit.
+            \item Zvýraznit povinné položky formulářů.
+            \item Potvrzování akcí.
         \end{itemize}
-    \item 6. Kouknu a vidím
+    \item Kouknu a vidím
         \begin{itemize}
-            \item Nezatěžovat uživatelovu paměť
-            \item Akce, které uživatel může momentálně provést by měli být viditelné a snadno dosažitelné
-            \item Stejně tak informace
-            \item Nepotřebné kontrolky a informace nepotřebujeme
-            \item Pozice uživatele
-            \item Krok ve wizardu (3 of 7)
-            \item Pozice ve stromové struktuře (bread crumb)
+            \item Nezatěžovat uživatelovu paměť.
+            \item Akce, které uživatel může momentálně provést by měly být viditelné a snadno dosažitelné.
+            \item Stejně tak informace.
+            \item Nepotřebné kontrolky a informace nepotřebujeme.
+            \item Pozice uživatele.
+            \item Pozice ve stromové struktuře.
         \end{itemize}
-    \item 7. Flexibilita a efektivita
+    \item Flexibilita a efektivita
         \begin{itemize}
-            \item Zkušení vs. běžní uživatelé
-            \item To co zkušený uživatel pravidelně potřebuje, běžný kolikrát ani nepotřebuje vědět
-            \item Pokročilý (Advanced) mód
-            \item Klávesové zkratky / funkční klávesy
-            \item Makra
-            \item Klonování existujících záznamů (templates)
+            \item Zkušení vs. běžní uživatelé.
+            \item To co zkušený uživatel pravidelně potřebuje, běžný kolikrát ani nepotřebuje vědět.
+            \item Pokročilý mód.
+            \item Klávesové zkratky / funkční klávesy.
+            \item Makra.
+            \item Klonování existujících záznamů.
             \item Jsou opravdu všechny akce/nastavení potřeba?
         \end{itemize}
-    \item 8. Minimalita (Klapky na očích)
+    \item Minimalita (Klapky na očích)
         \begin{itemize}
             \item Zobrazovat pouze informaci, která aktuálně k~něčemu opravdu je.
-            \item Čim méně možností uživatel má, tím rychleji koná
-            \item (Nepotřebná) grafika by neměla zastiňovat ovládáni a účel
-            \item Cokoliv je zobrazeno soutěží o~uživatelovu pozornost
-            \item Je třeba nechat vyhrát to důležité
+            \item Čim méně možností uživatel má, tím rychleji koná.
+            \item (Nepotřebná) grafika by neměla zastiňovat ovládání a účel.
+            \item Cokoliv je zobrazeno soutěží o~uživatelovu pozornost.
+            \item Je třeba nechat vyhrát to důležité.
         \end{itemize}
-    \item 9. Smysluplné chybové hlášky
+    \item Smysluplné chybové hlášky
         \begin{itemize}
-            \item Nejlepší je nedojít do stavu kdy je třeba chybového hlášení
-            \item Chybové hlášení v~běžném jazyce – žádné kódy
+            \item Nejlepší je nedojít do stavu kdy je třeba chybového hlášení.
+            \item Chybové hlášení v~běžném jazyce – žádné kódy.
             \item Chybové hlášení by mělo popsat co se stalo špatně, jak se to stalo a jak tomu příště předejít.
-            \item Případně možná řešení doporučit
-            \item Mělo by poučit (vzdělat) uživatele
+            \item Případně možná řešení doporučit.
+            \item Mělo by poučit (vzdělat) uživatele.
         \end{itemize}
-    \item 10. Help a dokumentace
+    \item Pomoc a dokumentace
         \begin{itemize}
-            \item Systém by měl být použitelný bez jakékoliv nápovědy, nicméně…
-            \item Nápověda musí být
-            \item Musí podporovat funkci vyhledávání
-            \item Spíše než popisem by se měla zabývat příklady
-            \item Kontextová nápověda
+            \item Systém by měl být použitelný bez jakékoliv nápovědy, nicméně nápověda musí být.
+            \item Musí podporovat funkci vyhledávání.
+            \item Spíše než popisem by se měla zabývat příklady.
+            \item Kontextová nápověda.
         \end{itemize}
-\end{itemize}
+\end{enumerate}
 
 \subsection{Nalezené problémy}
 Nalezené problémy jsou shrnuty v~tabulce \ref{tab:heuristic-analysis}. Každý z~nalezených problémů je hodnocen na stupnici 1 - 5, kde 1 znamená málo závažný problém a oproti tomu 5 značí velmi závažný problém. Pro všechny nalezené problémy je také navržen způsob řešení vedoucí k~odstranění problému. Všechny nalezené problémy byly před dalším vývojem aplikace vyřešeny.

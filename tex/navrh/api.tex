@@ -1,6 +1,6 @@
 \pagebreak
 \section{Návrh REST API}\label{rest-api-design}
-V~následujících podkapitolách jsou uvedeny všechny zdroje spolu s~příslušnou HTTP metodou.
+V~následujících podkapitolách jsou uvedeny všechny zdroje spolu s~příslušnou HTTP metodou. Veškeré požadavky i odpovědi serveru jsou ve formátu JSON.
 
 \subsection{GET /api/offer}
 Zdroj pro získávání nabídek s~možností filtrace, stránkování a řazení pomocí parametrů v~URL adrese. Těmito parametry jsou:
@@ -38,7 +38,7 @@ Zdroj pro vytvoření nové nabídky. V~těle požadavku je potřeba uvést tyto
 Zdroj pro získání informací o~jedné konkrétní nabídce.
 
 \subsection{PATCH /api/offer/\{id\}/}
-Tento zdroj slouží k částečné úpravě nabídky. Aplikace konkrétně umožňuje pouze změnu stavu nabídky. V těle požadavku musí být uveden parametr \texttt{status} (Jeho hodnota musí id z modelové třídy \texttt{OfferStatus}). Změny statusů musí odpovídat akcím z diagramu \ref{fig:implementation:state-diagram} na straně \pageref{fig:implementation:state-diagram}. Příklad požadavku je uveden v ukázce kódu \ref{code:api-status-change}.
+Tento zdroj slouží k částečné úpravě nabídky. Aplikace konkrétně umožňuje pouze změnu stavu nabídky. V těle požadavku musí být uveden parametr \texttt{status} (jeho hodnota musí rovna atributu \texttt{id} z modelové třídy \texttt{OfferStatus}). Změny statusů musí odpovídat akcím z diagramu \ref{fig:implementation:state-diagram} na straně \pageref{fig:implementation:state-diagram}. Příklad požadavku je uveden v ukázce kódu \ref{code:api-status-change}.
 
 \begin{listing}[htbp]
 \caption{\label{code:api-status-change}Ukázka změny statusu přes API}

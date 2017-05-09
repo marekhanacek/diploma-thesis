@@ -38,7 +38,7 @@ Zdroj pro vytvoření nové nabídky. V~těle požadavku je potřeba uvést tyto
 Zdroj pro získání informací o~jedné konkrétní nabídce.
 
 \subsection{PATCH /api/offer/\{id\}/}
-Tento zdroj slouží k částečné úpravě nabídky. Aplikace konkrétně umožňuje pouze změnu stavu nabídky. V těle požadavku musí být uveden parametr \texttt{status} (jeho hodnota musí rovna atributu \texttt{id} z modelové třídy \texttt{OfferStatus}). Změny statusů musí odpovídat akcím z diagramu \ref{fig:implementation:state-diagram} na straně \pageref{fig:implementation:state-diagram}. Příklad požadavku je uveden v ukázce kódu \ref{code:api-status-change}.
+Tento zdroj slouží k~částečné úpravě nabídky. Aplikace konkrétně umožňuje pouze změnu stavu nabídky. V~těle požadavku musí být uveden parametr \texttt{status} (jeho hodnota musí rovna atributu \texttt{id} z~modelové třídy \texttt{OfferStatus}). Změny statusů musí odpovídat akcím z~diagramu \ref{fig:implementation:state-diagram} na straně \pageref{fig:implementation:state-diagram}. Příklad požadavku je uveden v~ukázce kódu \ref{code:api-status-change}.
 
 \begin{listing}[htbp]
 \caption{\label{code:api-status-change}Ukázka změny statusu přes API}
@@ -56,7 +56,7 @@ PATCH /api/offer/123/
 Slouží k~získávání dat o~hodnoceních, které se týkají dané nabídky. Výstup nelze řadit, filtrovat ani stránkovat.
 
 \subsection{POST /api/offer/\{id\}/feedback}
-Slouží k~přidání nového hodnocení k dané nabídce. Vstupní parametry lze vypozorovat z~definice modelové třídy Feedback.
+Slouží k~přidání nového hodnocení k~dané nabídce. Vstupní parametry lze vypozorovat z~definice modelové třídy Feedback.
 
 \subsection{GET /api/user}
 Výpis všech uživatelů aplikace. Výpis je stránkován po 10 záznamech. Stránkování lze měnit pomocí parametru \texttt{page}.
@@ -74,7 +74,7 @@ Seznam nabídek čekajících na reakci daného uživatele.
 Seznam nabídek čekajících na reakci jiných uživatelů.
 
 \subsection{GET /api/user/login/facebook}
-Tento zdroj slouží pro oznámení o~registraci/přihlášení přes Facebook pomocí mobilní aplikace. Je potřeba uvést v~url parametr \texttt{access-token}, pomocí kterého si aplikace zjistí další potřebné informace z~API Facebooku.
+Tento zdroj slouží pro oznámení o~registraci, resp. přihlášení, přes Facebook pomocí mobilní aplikace. Je potřeba uvést v~url parametr \texttt{access-token}, pomocí kterého si aplikace zjistí další potřebné informace z~API Facebooku.
 
 \subsection{GET /api/language}
 Výpis všech jazyků. Pokud je počet záznamů větší než 10, pak je výpis stránkován po 10 záznamech.

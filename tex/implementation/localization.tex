@@ -2,7 +2,7 @@
 Django poskytuje podporu pro lokalizaci aplikace do jiných jazyků. Použití je následující:
 \begin{enumerate}
     \item Veškeré výrazy, které by měly být lokalizovány je nutné předat do funkce \\\texttt{django.utils.translation.ugettext}. V~šablonách lze pak použít tag \\\mbox{\texttt{\{\% trans \%\}}}.
-    \item Vyplněnín proměnné \texttt{LOCALE\_PATHS} v~souboru \texttt{settings.py} definujeme adresář, do kterého budou umisťovány soubory s~překlady.
+    \item Vyplněním proměnné \texttt{LOCALE\_PATHS} v~souboru \texttt{settings.py} definujeme adresář, do kterého budou umisťovány soubory s~překlady.
     \item Pomocí příkazu \texttt{django-admin makemessages -l en} se vytvoří soubor s~příponou \texttt{.po}, do kterého se vloží všechny potřebné řetězce, které je potřeba přeložit.
     \item Po vyplnění veškerých překladů je potřeba vytvořit soubor s~příponou \texttt{.mo}\footnote{Jedná se o~binární soubor.} pomocí příkazu \texttt{django-admin compilemessages}.
     \item Daný jazyk se pak v~aplikaci nastaví pomocí zavolání funkce \\\texttt{django.utils.translation.activate('en')}.

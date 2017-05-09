@@ -7,20 +7,20 @@ Použité technologie lze rozdělit do tří částí:
 \end{itemize}
 
 \subsection{Databázové technologie}
-Aplikace používá pro ukládání dat databázový server \textbf{MySQL}. Vzhledem k~použití zvoleného frameworku Django je možné databázový server velmi jednoduše zaměnit například za \textbf{PostgreSQL}, \textbf{Oracle database} nebo \textbf{SQLite}.
+Aplikace používá pro ukládání dat databázový server \textbf{MySQL}. Vzhledem k~použití zvoleného frameworku Django je možné databázový server velmi jednoduše zaměnit například za \textbf{PostgreSQL}, \textbf{Oracle database} nebo \mbox{\textbf{SQLite}}.
 
 \subsection{Technologie na klientské straně}
 Vedle standardních technologií používaných při tvorbě webových aplikací, jako jsou \textbf{HTML}, \textbf{CSS} a \textbf{JavaScript}, aplikace používá \textbf{CSS framework Bootstrap}, který obsahuje velké množství předdefinovaných nejen kaskádových stylů, ale také JavaSriptu. Pro CSS je dále použit \textbf{preprocessor LESS}, který přináší přehlednější CSS kód, který je obohacen o~řadu vylepšení. Pro dynamické efekty na stránce a příjemnější použití JavaScriptu aplikace používá knihovnu \textbf{jQuery}. S~JavaScriptem je dále spojena knihovna podporující použití \textbf{Google map} na webu.
 
 \subsubsection{Google maps}
-V~aplikaci je potřeba zobrazovat nabídky na mapě. K tomu bylo vybráno řešení od společnosti Google \cite{googlemaps}. V~aplikaci používám zejména zobrazení nabídek v~mapě s~možností otevření informačního okna s~detailem nabídky, převod z~adresy na souřadnice a zpět, zobrazování kruhů v~mapě a další.
+V~aplikaci je potřeba zobrazovat nabídky na mapě, k~čemuž bylo vybráno řešení od společnosti Google \cite{googlemaps}. V~aplikaci je použito zejména zobrazení nabídek v~mapě s~možností otevření informačního okna s~detailem nabídky, převod z~adresy na souřadnice a zpět, zobrazování kruhů v~mapě a další.
 
 \subsection{Technologie na serverové straně}
 \subsubsection{Python}
 Použití jazyka Python plyne ze zadání. Python je moderní programovací jazyk. Je univerzální – pohání weby i rakety. Dobře se čte a dá se velice rychle naučit. Je skvělý pro výuku programování \cite{python-cz}.
 
 \subsubsection{Django}
-Po domluvě s~vedoucím práce jsem se rozhodl pro použití frameworku Django. Django byl původně vytvořen v~novinářském prostředí v~roce 2003 a později v~roce 2005 byl vydán jako open source \cite{djangobook, django-cr}. Nejdůležitější částí frameworku Django je architektura Model-View-Template, která je popsána v~následující kapitole.
+Na základě domluvy s~vedoucím práce byl vybrán framework Django. Django byl původně vytvořen v~novinářském prostředí v~roce 2003 a později v~roce 2005 byl vydán jako open source \cite{djangobook, django-cr}. Nejdůležitější částí frameworku Django je architektura Model-View-Template, která je popsána v~následující kapitole.
 
 \subsubsection{Architektura Model-View-Template (MVT)}
 MVT je architektura odvozená od architektury \textbf{Model-View-Controller}. V~architektuře MVT je vynechána vrstva Controller\footnote{Vrstva zprostředkovávající interakci mezi vrstvami Model a View/View-Template}, o~kterou se stará framework Django sám, a která je nahrazena kombinací vrstev View a Template.
@@ -28,6 +28,6 @@ MVT je architektura odvozená od architektury \textbf{Model-View-Controller}. V~
 \paragraph*{Model}
 Model je datový a funkční základ aplikace. Obsahuje definici modelových a servisních tříd.
 \paragraph*{View}
-V~kontextu frameworku Django je \textbf{view} neboli \textbf{pohled} vrstva stojící mezi vrstvami model a template. Úkolem je získávání dat od uživatele, případně od vrstvy model a předávání těchto dat do šablon. Pohled obsahuje data, která mají být zobrazena, ale nedefinuje, jak mají být zobrazena. Každý pohled je spojen s~konkrétním URL.
+V~kontextu frameworku Django je \textbf{view} neboli \textbf{pohled} vrstva stojící mezi vrstvami model a template. Úkolem je získávání dat od uživatele, případně od vrstvy model, a předávání těchto dat do šablon. Pohled obsahuje data, která mají být zobrazena, ale nedefinuje, jak mají být zobrazena. Každý pohled je spojen s~konkrétním URL.
 \paragraph*{Template}
 Vrstva \textbf{template}, neboli \textbf{šablona}, popisuje, jak jsou data zobrazena uživateli. Může se jednat o~reprezentaci v~HTML nebo například reprezentaci ve formátu JSON.

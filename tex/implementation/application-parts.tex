@@ -2,18 +2,20 @@
 
 \subsection{Modely}
 \begin{sloppypar}
-Společným předkem všech modelů v~aplikaci je třída \texttt{django.db.models.Model}. Atributy modelů jsou v~ní realizovány pomocí třídních proměnných\footnote{V kontextu relačních databázi je jedná o~sloupce tabulky}, které mají vždy určitý datový typ, který je podinstancí třídy \texttt{django.db.models.Field}. Kromě klasických typů jako je řetězec\footnote{V Django třída \texttt{django.db.models.CharField}.}, celé číslo\footnote{V Django třída \texttt{django.db.models.IntegerField}.} nebo cizí klíč\footnote{V Django třída \texttt{django.db.models.ForeignKey}.}, lze použít například typ \texttt{django.db.models.ImageField}, pomocí kterého aplikace ukládá profilové obrázky uživatelů. Framework Django se stará o~vytvoření složky se těmito soubory a dále také o~ukládání příslušné cesty obrázku do databáze. Modelové třídy jsou mapovány do tabulek v~relační databázi MySQL pomocí \textbf{databázových migrací}.
+Společným předkem všech modelů v~aplikaci je třída \texttt{django.db.models.Model}. Atributy modelů jsou v~ní realizovány pomocí třídních proměnných\footnote{V kontextu relačních databázi je jedná o~sloupce tabulky}, které mají vždy určitý datový typ, který je podinstancí třídy \texttt{django.db.models.Field}. Kromě klasických typů jako je řetězec\footnote{V Django třída \texttt{django.db.models.CharField}.}, celé číslo\footnote{V Django třída \texttt{django.db.models.IntegerField}.} nebo cizí klíč\footnote{V Django třída \texttt{django.db.models.ForeignKey}.}, lze použít například typ \texttt{django.db.models.ImageField}, pomocí kterého aplikace ukládá profilové obrázky uživatelů. Framework Django se stará o~vytvoření složky s~těmito soubory a dále také o~ukládání příslušné cesty obrázku do databáze. Modelové třídy jsou mapovány do tabulek relační databáze MySQL pomocí \textbf{databázových migrací}.
 \end{sloppypar}
 
 \subsubsection{Databázové migrace}
 Migrace je proces ukládání změn modelových tříd. V~Django frameworku jsou migrace realizovány pomocí tříd, které tyto změny uchovávají. Po jakékoliv změně v~modelových třídách je nutné nejprve vytvořit migrační třídy pomocí příkazu \mbox{\texttt{python manage.py makemigrations}} a poté vytvořené migrace spustit pomocí příkazu \mbox{\texttt{python manage.py migrate}}. Spuštěním migrací se upraví struktura databáze v~MySQL dle modelových tříd. Není tedy nutné tyto migrace psát ručně, či jakkoliv upravovat schéma databáze. Programátor je tak plně odstíněn od psaní dotazů v~MySQL.
 
 \subsection{Pohledy}
+\begin{sloppypar}
 Společným předkem pohledů je třída \texttt{django.views.generic.base.View}. V~této třídě je nutné definovat alespoň jednu metodu, jejíž název je totožný s~nějakou HTTP metodou\footnote{HTTP metody jsou get, post, put, patch, delete, head, options a trace}. Příslušná metoda je pak vyvolána pouze v~případě požadavku v~dané HTTP metodě. Vstupním parametrem těchto funkcí je požadavek a případně další parametry z~URL. Návratovou hodnotou je objekt reprezentující HTTP odpověď. Pro vytváření HTTP odpovědi existuje spousta zkratek, z~nichž nejčastěji jsou v~aplikaci použity tyto metody:
 \begin{itemize}
-    \item \texttt{django.shortcuts.render} -- Vyžaduje název šablony, která má být vykreslena a dále kontext, neboli data, která jsou předána do šablony.
-    \item \texttt{django.shortcuts.redirect} -- Slouží k~přesměrování na pohled aplikace. Kontext předávaný do šablony lze dále upravovat pomocí takzvaných \textbf{procesorů kontextu}.
+    \item \texttt{django.shortcuts.render} -- Vyžaduje název šablony, která má být vykreslena a dále kontext, neboli data, která jsou předána do šablony. Kontext předávaný do šablony lze dále upravovat pomocí takzvaných \textbf{procesorů kontextu}.
+    \item \texttt{django.shortcuts.redirect} -- Slouží k~přesměrování na pohled aplikace.
 \end{itemize}
+\end{sloppypar}
 
 \subsubsection{Procesory kontextu}
 \begin{sloppypar}
@@ -50,7 +52,7 @@ Django ve výchozím nastavení používá vlastní šablonovací systém nazvan
 \end{minted}
 \end{listing}
 
-Aplikace obsahuje 2 hlavní šablony -- pro zobrazení bez mapy a pro zobrazení s~mapou. Hlavní šablony obsahují odkazy na CSS soubory, JS soubory a všechny nutné elementy stránky, které jsou zobrazeny na všech podstránkách. Od těchto hlavních šablon pak dědí všechny konkrétní šablony. Dědění šablon je v~aplikaci implementováno pomocí definice bloku \texttt{content} v~hlavní i konkrétní šabloně a dále uvedením tagu \texttt{extends} v~konkrétní šabloně\footnote{Tag extends je nutné umístit na samotný začátek souboru.} definujeme, jakou šablonu rozšiřujeme. V~následujících podkapitolách jsou popsány další nástroje týkající se šablon, které aplikace používá.
+Aplikace obsahuje dvě hlavní šablony -- pro zobrazení bez mapy a pro zobrazení s~mapou. Hlavní šablony obsahují odkazy na CSS soubory, JS soubory a všechny nutné elementy stránky, které jsou zobrazeny na všech podstránkách. Od těchto hlavních šablon pak dědí všechny konkrétní šablony. Dědění šablon je v~aplikaci implementováno pomocí definice bloku \texttt{content} v~hlavní i konkrétní šabloně a dále uvedením tagu \texttt{extends} v~konkrétní šabloně\footnote{Tag extends je nutné umístit na samotný začátek souboru.} definujeme, jakou šablonu rozšiřujeme. V~následujících podkapitolách jsou popsány další nástroje týkající se šablon, které aplikace používá.
 
 \subsubsection{Filtry}
 Filtry usnadňují prezentaci dat v~šablonách. Díky filtrům se šablony stávají kratší, přehlednější a tím pádem lépe čitelné. Filtry lze v~šablonách použít tímto způsobem: \mbox{\texttt{\{\{ nazevPromenne|nazevFiltru \}\}}}. V~aplikaci jsou kromě filtrů definovaných frameworkem Django definovány tyto filtry:
@@ -62,7 +64,7 @@ Filtry usnadňují prezentaci dat v~šablonách. Díky filtrům se šablony stá
 
 \subsubsection{Přiřazovací tagy}
 \begin{sloppypar}
-Pomocí přiřazovacích tagů lze přímo v~šabloně přiřazovat výrazy do proměnné. Aplikace přiřazovacích tagů využívá v~případě, kdy je nutné zavolat funkci, která očekává parametry, což v~šablonách ve frameworku Django není možné. Syntaxe přiřazovacích tagu je následující: \mbox{\texttt{\{\% is\_user\_verified offer.user\_created as is\_verified \%\}}}. V~aplikaci jsou implementovány tyto přiřazovací tagy:
+Pomocí přiřazovacích tagů lze přímo v~šabloně přiřazovat výrazy do proměnné. Aplikace přiřazovacích tagů využívá v~případě, kdy je nutné zavolat funkci, která očekává parametry, což v~šablonách ve frameworku Django není možné. Syntaxe přiřazovacích tagů je následující: \mbox{\texttt{\{\% is\_user\_verified offer.user\_created as is\_verified \%\}}}. V~aplikaci jsou implementovány tyto přiřazovací tagy:
 \begin{itemize}
     \item \texttt{is\_user\_verified} - Zjišťuje zda je uživatel ověřený.
     \item \texttt{get\_other\_user} - Vstupním parametrem je nabídka a uživatel, výstupem je druhý uživatel, který je přiřazen k~nabídce.
@@ -101,7 +103,7 @@ URL adresy projektu jsou definovány v~souboru \texttt{dip/urls.py}, ve kterém 
 \end{itemize}
 
 \subsection{Middleware}
-Middleware je třída, pomocí které je možné upravit požadavek ještě před zpracováním v~pohledu. Aplikace middleware používá pro ukládání vstupní polohy uživatele do session\footnote{Session jsou data uživatele uložena na serveru -- konkrétně ve frameworku Django v~databázi.}. Vstupní poloha uživatele se pak dále v~řadě pohledů.
+Middleware je třída, pomocí které je možné upravit požadavek ještě před zpracováním v~pohledu. Aplikace middleware používá pro ukládání vstupní polohy uživatele do session\footnote{Session jsou data uživatele uložena na serveru -- konkrétně ve frameworku Django v~databázi.}. Vstupní poloha uživatele se pak dále používá v~řadě pohledů.
 
 \subsection{Formuláře}
 \begin{sloppypar}

@@ -23,12 +23,12 @@ Formulář obsahuje tři základní parametry, pomocí nichž lze filtrovat:
 	\item měnu, do které chceme peníze směnit,
 	\item interval obnosu peněz.
 \end{itemize}
-Filtrace dále bere v~potaz i aktuální, respektive uživatelem zadanou polohu, a poloměr. Filtrace se samozřejmě projevuje i v~mapě. Jsou tedy zobrazeny jen ty nabídky, které odpovídají zadaným filtrům.
+Filtrace dále bere v~potaz i aktuální polohu (respektive uživatelem zadanou polohu) a poloměr. Filtrace se samozřejmě projevuje i v~mapě. Jsou tedy zobrazeny jen ty nabídky, které odpovídají zadaným filtrům.
 
 \subsection{Řazení nabídek}
 Vidno na obrázku \ref{fig:tur:sorting}. Nabídky lze seřadit čtyřmi různými způsoby:
 \begin{itemize}
-	\item Vzestupně dle vzdálenosti uživatelovy polohy od centra nabídky.
+	\item Vzestupně dle vzdálenosti polohy uživatele od centra nabídky.
 	\item Vzestupně dle obnosu peněz nabídek.
 	\item Sestupně dle hodnocení uživatelů.
 	\item Dle kombinace více kritérií nabídek. Tento způsob blíže popisuji v~následující podkapitole.
@@ -60,7 +60,7 @@ Hodnocení se skládá ze dvou složek:
         \begin{itemize}
             \item Za vzdálenost od uživatele může nabídka dostat 0 až 1 bod.
             \item Hodnota se počítá na základě vzdálenosti nejbližší a nejvzdálenější nabídky a dále na základě vzdálenosti právě hodnocené nabídky.
-            \item Kód výpočtu této hodnoty lze vidět v ukázce kódu \ref{code:sorting-distance}.
+            \item Kód výpočtu této hodnoty lze vidět v~ukázce kódu \ref{code:sorting-distance}.
             \item Čím blíže je tedy nabídka k~zákazníkovi, tím lepší hodnocení obdrží.
             \item \textit{Příklad}: V~případě tři nabídek ve vzdálenostech 15~km, 2~km a 28~km, budou hodnocení 0.5, 1 a 0.
         \end{itemize}

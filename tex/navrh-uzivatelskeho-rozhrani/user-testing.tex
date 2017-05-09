@@ -11,8 +11,8 @@ Pro testování s~uživateli bylo připraveno 9 úkolů, u~kterých se očekáv�
     \item Změňte adresu na vaši aktuální.
     \item Máte k~dispozici 10 000 českých korun a chcete je směnit na eura. Nalezněte nejlepší nabídku a potvrďte zájem o~tuto nabídku.
     \item Žádná z~nabídek se vám nelibí, vytvořte ji.
-    \item Představte si situaci, že jste vyměnili s~jiným uživatelem peníze. Nabídka je tedy ve stavu \textit{Ready to exchange}. Zaznamenejte tuto aktivitu do systému.
-    \item Přidejte hodnocení ke směně v~předchozím kroku. Nabídka je nyní ve stavu \textit{Finished}.
+    \item Představte si situaci, že jste vyměnili s~jiným uživatelem peníze. Nabídka je tedy ve stavu \textit{Připravena ke směně (Ready to exchange)}. Zaznamenejte tuto aktivitu do systému.
+    \item Přidejte hodnocení ke směně v~předchozím kroku. Nabídka je nyní ve stavu \textit{Dokončená (Finished)}.
 \end{enumerate}
 
 \subsection{Představení testovaných osob}
@@ -40,7 +40,7 @@ Výsledky testování a nalezené problémy jsou uvedeny v~tabulce \ref{tab:test
 \end{itemize}
 
 \begin{table}[h]
-    \caption{Problémy nalezené při testování s uživateli}\label{tab:test-results}
+    \caption{Problémy nalezené při testování s~uživateli}\label{tab:test-results}
     \begin{tabulary}{1.0\textwidth}{|c|c|L|}
         \hline
         \textbf{Osoba} & \textbf{Úkol} & \textbf{Popis problému} \\ \hline\hline
@@ -48,12 +48,12 @@ Výsledky testování a nalezené problémy jsou uvedeny v~tabulce \ref{tab:test
 %        A & 9 & Dle uživatele je detail nabídky nepřehledný.  \\ \hline
 
         B & 4 & Uživatel hledal vyhledávací pole, kam může zadat hledaný výraz. Později si všiml, že se na úvodní stránce nachází odkaz na Jimův profil. \\ \hline
-        B & 6 & Při vyhledávání nabídek si uživatel myslel, že tlačítko New offer slouží pro potvrzení vyhledávání \\ \hline
+        B & 6 & Při vyhledávání nabídek si uživatel myslel, že tlačítko New offer slouží pro potvrzení vyhledávání. \\ \hline
         B & 8 & Uživatel velmi dlouho hledal tlačítko pro potvrzení transakce. Hodně pozornosti věnoval sekci \textit{Historie s~uživatelem (History with user)}. \\ \hline
 
-        C & 2 & Uživatel klikl na ikonu Google Translator v~prohlížeči pro přeložení.  \\ \hline
+        C & 2 & Uživatel klikl na ikonu \textit{Google Translator} v~prohlížeči pro přeložení.  \\ \hline
         C & 3 & Úkol trval nad očekávání velmi dlouho.  \\ \hline
-        C & 5 & Uživatel nevěděl kde má změnit svou adresu. Později tlačítko našel.  \\ \hline
+        C & 5 & Uživatel nevěděl, kde má změnit svou adresu. Později tlačítko našel.  \\ \hline
         C & 6 & Vyhledání nejlepší nabídky proběhlo v~pořádku ale, nemohla najít tlačítko pro potvrzení nabídek, což bylo způsobeno neznalostí anglického jazyka. \\ \hline
 
         E & 5 & Možnost změny adresy hledal na stránce z~předchozího úkolu -- \textit{Profil uživatele}.  \\ \hline
